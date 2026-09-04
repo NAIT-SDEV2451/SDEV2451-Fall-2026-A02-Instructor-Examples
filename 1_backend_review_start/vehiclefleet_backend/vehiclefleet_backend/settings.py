@@ -73,3 +73,10 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+
+# DJANGO REST framework settings
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": {
+        "rest_framework.permissions.AllowAny",
+    }
+}
