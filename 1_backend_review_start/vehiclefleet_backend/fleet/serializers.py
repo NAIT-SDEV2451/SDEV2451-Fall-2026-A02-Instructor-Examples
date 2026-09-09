@@ -23,3 +23,29 @@ class DriverSerializer(serializers.ModelSerializer):
         # the database model that we're referring to.
         fields = "__all__"  # this is a short hand for all fields
         # we can speficy them as a list as well.
+
+
+class TripSerializer(serializers.ModelSerializer):
+    # we need to handle the vehicle and driver
+    # we're going to do this so that it's the id for create/update
+    # we're going show the detail when it's a read/get
+
+    class Meta:
+        model = Trip
+        fields = [
+            # for creating a trip we're just going to
+            # take in the ids of vehicle and driver
+            "vehicle",
+            "driver",
+            # the plain fields
+            "start_location",
+            "end_location",
+            "start_time",
+            "end_time",
+            "distance",
+        ]
+        # specify that driver and vehicle fields are write only.
+        extra_kwargs = {
+            "vehicle": {"write_only": True},
+            "driver": {"write_only": True},
+        }
