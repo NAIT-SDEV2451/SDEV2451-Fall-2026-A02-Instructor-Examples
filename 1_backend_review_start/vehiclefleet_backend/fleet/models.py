@@ -48,4 +48,6 @@ class Trip(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField(null=True, blank=True)
     # distance
-    distance = models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    distance = models.DecimalField(
+        max_digits=8, decimal_places=2, null=True, blank=True
+    )
