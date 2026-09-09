@@ -13,3 +13,15 @@ class Vehicle(models.Model):
     # when you're reading a debugging.
     def __str__(self):
         return f" {self.make} {self.model} {self.year} ({self.licence_plate})"
+
+
+# so let's add a driver model
+class Driver(models.Model):
+    name = models.CharField(max_length=150)
+    license_number = models.CharField(max_length=50, unique=True)
+    phone = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
+
+    # we're going to add the str
+    def __str__(self):
+        return f"{self.name}, ({self.license_number})"

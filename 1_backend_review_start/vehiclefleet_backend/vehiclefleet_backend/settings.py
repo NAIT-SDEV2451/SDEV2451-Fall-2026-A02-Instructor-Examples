@@ -76,6 +76,7 @@ STATIC_URL = "static/"
 
 # DJANGO REST framework settings
 REST_FRAMEWORK = {
+    # the default permission classes is supposed to be an array.
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ]
