@@ -1,6 +1,7 @@
 # from DRF itself
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 # fround our code let's import our models and serializers
 from fleet.models import Vehicle, Driver, Trip
@@ -27,3 +28,31 @@ class FleetStatsView(APIView):
         # using .objects.count() or .all() or .filter() or .update()
         # or .create() this is doing crud on the models/db instances
         # you've created.
+
+
+# viewsets are pretty handy because they allow for less code to
+# write our get, patch, put, post, delete views for our endpoints.
+class VehicleViewSet(ModelViewSet):
+    # what data we want from the database
+    queryset = Vehicle.objects.all()
+    # define how we want to serialize it
+    serializer_class = VehicleSerializer
+
+
+class DriverViewSet(ModelViewSet):
+    # what data we want from the database
+    queryset = Driver.objects.all()
+    # define how we want to serialize it
+    serializer_class = DriverSerializer
+
+
+class TripViewSet(ModelViewSet):
+    serializer_class = TripSerializer
+    # note like get_queryset you can also get_serializer_class
+
+    # instead of queryset class variable we can use get_queryset
+    # if we wanted to use the user or any other information.
+    def get_queryset(self):
+        # we're going to talk about this later on but we can
+        # use select_related to fetch everything in one sql query
+        return Trip.objects.select_related("vehicle", "driver").all()
