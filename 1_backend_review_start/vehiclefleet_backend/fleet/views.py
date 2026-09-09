@@ -3,6 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+# let's import a filter
+from rest_framework.filters import SearchFilter
+
 # fround our code let's import our models and serializers
 from fleet.models import Vehicle, Driver, Trip
 from fleet.serializers import (
@@ -37,6 +40,10 @@ class VehicleViewSet(ModelViewSet):
     queryset = Vehicle.objects.all()
     # define how we want to serialize it
     serializer_class = VehicleSerializer
+    # to be able to make our api searchable
+    filter_backends = [SearchFilter]
+    # what fields we can search on
+    search_fields = ["make", "model", "license_plate"]
 
 
 class DriverViewSet(ModelViewSet):
@@ -44,6 +51,10 @@ class DriverViewSet(ModelViewSet):
     queryset = Driver.objects.all()
     # define how we want to serialize it
     serializer_class = DriverSerializer
+    # to be able to make our api searchable
+    filter_backends = [SearchFilter]
+    # what fields we can search on
+    search_fields = ["name", "license_number", "email"]
 
 
 class TripViewSet(ModelViewSet):
