@@ -13,7 +13,7 @@ class Vehicle(models.Model):
     # you want to be able to know what's in the model
     # when you're reading a debugging.
     def __str__(self):
-        return f" {self.make} {self.model} {self.year} ({self.licence_plate})"
+        return f" {self.make} {self.model} {self.year} ({self.license_plate})"
 
 
 # so let's add a driver model
