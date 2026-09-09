@@ -14,3 +14,12 @@ class VehicleSerializer(serializers.ModelSerializer):
         # the database model that we're referring to.
         fields = "__all__"  # this is a short hand for all fields
         # we can speficy them as a list as well.
+
+
+class DriverSerializer(serializers.ModelSerializer):
+    # we need to set up the modelserializer
+    class Meta:
+        model = Driver
+        # the database model that we're referring to.
+        fields = "__all__"  # this is a short hand for all fields
+        # we can speficy them as a list as well.
