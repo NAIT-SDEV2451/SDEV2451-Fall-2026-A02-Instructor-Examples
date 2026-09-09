@@ -76,7 +76,7 @@ STATIC_URL = "static/"
 
 # DJANGO REST framework settings
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": {
+    "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
-    }
+    ]
 }
