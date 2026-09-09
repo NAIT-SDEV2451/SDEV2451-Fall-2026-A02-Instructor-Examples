@@ -7,7 +7,8 @@ class Vehicle(models.Model):
     make = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.PositiveBigIntegerField()
-    licence_plate = models.CharField(max_length=100, unique=True)
+    # change licence to license (typo fix)
+    license_plate = models.CharField(max_length=100, unique=True)
 
     # you want to be able to know what's in the model
     # when you're reading a debugging.
