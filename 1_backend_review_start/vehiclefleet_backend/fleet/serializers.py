@@ -29,6 +29,9 @@ class TripSerializer(serializers.ModelSerializer):
     # we need to handle the vehicle and driver
     # we're going to do this so that it's the id for create/update
     # we're going show the detail when it's a read/get
+    # using the serializers that we've created
+    vehicle_detail = VehicleSerializer(source="vehicle", read_only=True)
+    driver_detail = DriverSerializer(source="driver", read_only=True)
 
     class Meta:
         model = Trip
@@ -37,6 +40,9 @@ class TripSerializer(serializers.ModelSerializer):
             # take in the ids of vehicle and driver
             "vehicle",
             "driver",
+            # for reads we need to inclue the above.
+            "vehicle_detail",
+            "driver_detail",
             # the plain fields
             "start_location",
             "end_location",
