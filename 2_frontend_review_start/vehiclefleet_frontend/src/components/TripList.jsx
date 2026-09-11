@@ -31,7 +31,10 @@ export default function TripList({trips}) {
                 <td>{new Date(trip.start_time).toLocaleString()}</td>
               </td>
               <td>
-                {/*  */}
+                {/* if there's no distance we'll say that it's in progress */}
+                {trip.distance ?? (
+                  <span className="badge badge-warning badge-sm">In progress</span>
+                )}
               </td>
             </tr>
           })}
