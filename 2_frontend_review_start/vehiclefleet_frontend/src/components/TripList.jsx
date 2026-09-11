@@ -28,7 +28,7 @@ export default function TripList({trips}) {
               <td>{trip.end_location}</td>
               <td>
                 {/* we're going to convert this to a date and then use tolocale string */}
-                <td>{new Date(trip.start_time).toLocaleString()}</td>
+                {new Date(trip.start_time).toLocaleString()}
               </td>
               <td>
                 {/* if there's no distance we'll say that it's in progress */}
