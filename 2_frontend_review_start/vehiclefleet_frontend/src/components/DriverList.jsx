@@ -13,9 +13,11 @@ export default function DriverList({drivers}) {
         </thead>
         <tbody>
           {drivers.map((driver)=> {
-
             return <tr>
-
+              <td>{driver.name}</td>
+              <td>{driver.license_number}</td>
+              <td>{driver.phone}</td>
+              <td>{driver.email}</td>
             </tr>
           })}
         </tbody>
