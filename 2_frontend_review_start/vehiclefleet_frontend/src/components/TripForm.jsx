@@ -1,5 +1,14 @@
 import { useState } from 'react'
 
+// create an empty form state that's a constant
+const EMPTY_FORM = {
+  vehicle: '',
+  driver: '',
+  start_location: '',
+  end_location: '',
+  start_time: ''
+}
+
 // the form that creates new trips
 export default function TripForm({
   // normal props where we're passing in a list.
