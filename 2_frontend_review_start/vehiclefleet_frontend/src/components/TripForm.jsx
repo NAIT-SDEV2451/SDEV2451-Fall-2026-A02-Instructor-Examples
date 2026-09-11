@@ -32,8 +32,16 @@ export default function TripForm({
     })
   }
 
-
   // we're going have some handle submit function
   // which will call our onSubmit callback and clear state.
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    // we're going to pass our form to our callback.
+    onSubmit(form)
+    // later we'll handle the result
+    // reset the form.
+    setForm(EMPTY_FORM)
+  }
 
+  return <></>
 }
