@@ -1,3 +1,4 @@
 /* replace with your tailwind and daisy */
 @import "tailwindcss";
+/* make sure that it's plugin and not import */
 @plugin "daisyui";
