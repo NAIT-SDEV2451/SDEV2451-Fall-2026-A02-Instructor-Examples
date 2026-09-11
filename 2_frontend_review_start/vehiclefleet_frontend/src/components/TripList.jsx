@@ -19,7 +19,22 @@ export default function TripList({trips}) {
           </tr>
         </thead>
         <tbody>
-
+          {trips.map((trip) => {
+            return <tr key={trip.id}>
+              <td>{trip.id}</td>
+              <td>{trip.vehicle_detail.make} {trip.vehicle_detail.model}</td>
+              <td>{trip.driver_detail.name}</td>
+              <td>{trip.start_location}</td>
+              <td>{trip.end_location}</td>
+              <td>
+                {/* we're going to convert this to a date and then use tolocale string */}
+                <td>{new Date(trip.start_time).toLocaleString()}</td>
+              </td>
+              <td>
+                {/*  */}
+              </td>
+            </tr>
+          })}
         </tbody>
       </table>
     </div>
