@@ -18,6 +18,11 @@ export default function TripForm({
   onSubmit
 }) {
   // some form state.
+  const [form, setForm] = useState(EMPTY_FORM)
+  // form the variable you'll use for the information
+  // setForm, this changes form variable when called with contents.
+  // EMPTY_FORM is the orig val of form
+
 
   // create some handler which will update the form state.
 
