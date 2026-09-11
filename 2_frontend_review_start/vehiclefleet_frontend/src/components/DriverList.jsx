@@ -13,7 +13,7 @@ export default function DriverList({drivers}) {
         </thead>
         <tbody>
           {drivers.map((driver)=> {
-            return <tr>
+            return <tr key={driver.id}>
               <td>{driver.name}</td>
               <td>{driver.license_number}</td>
               <td>{driver.phone}</td>
