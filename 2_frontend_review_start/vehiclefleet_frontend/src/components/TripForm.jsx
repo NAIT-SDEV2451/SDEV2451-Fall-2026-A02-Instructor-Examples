@@ -23,8 +23,15 @@ export default function TripForm({
   // setForm, this changes form variable when called with contents.
   // EMPTY_FORM is the orig val of form
 
-
   // create some handler which will update the form state.
+  // this will be called on change for all of the inputs.
+  const handleChange = (event) => {
+    setForm({
+      ...form, // copies all vals from form into a new object.
+      [event.target.name]: event.target.value
+    })
+  }
+
 
   // we're going have some handle submit function
   // which will call our onSubmit callback and clear state.
