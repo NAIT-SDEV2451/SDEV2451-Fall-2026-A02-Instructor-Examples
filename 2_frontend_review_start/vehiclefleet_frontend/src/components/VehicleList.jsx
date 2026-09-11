@@ -6,7 +6,12 @@ export default function VehicleList({vehicles}) {
     <div className="overflow-x-auto"> {/* className is used for class instead react */}
       <table className="table table-zebra w-full">
         <thead>
-
+          <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>License Plate</th>
+          </tr>
         </thead>
         <tbody>
 
