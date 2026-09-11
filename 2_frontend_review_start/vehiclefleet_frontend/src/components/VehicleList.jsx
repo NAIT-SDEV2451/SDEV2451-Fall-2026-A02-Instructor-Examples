@@ -14,7 +14,15 @@ export default function VehicleList({vehicles}) {
           </tr>
         </thead>
         <tbody>
-
+          {vehicles.map((vehicle)=> {
+            // lists need a key.
+            return <tr key={vehicle.id}>
+              <td>{vehicle.make}</td>
+              <td>{vehicle.model}</td>
+              <td>{vehicle.year}</td>
+              <td>{vehicle.license_plate}</td>
+            </tr>
+          })}
         </tbody>
       </table>
     </div>
