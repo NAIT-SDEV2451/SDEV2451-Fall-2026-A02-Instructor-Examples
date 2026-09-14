@@ -28,6 +28,13 @@ function App() {
             >
               Vehicles and Drivers
             </NavLink>
+            <NavLink
+              to="/trips/new"
+              className={`btn btn-sm btn-ghost`}
+            >
+              Create Trip
+            </NavLink>
+
           </div>
         </nav>
         {/* Build out our pages here. */}
