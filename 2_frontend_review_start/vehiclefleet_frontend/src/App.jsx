@@ -13,23 +13,25 @@ import VehiclesAndDriversPage from './pages/VehiclesAndDriversPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-base-200">
-      <nav className="navbar bg-base-100 shadow px-6">
-        <div className="navbar-start">
-          <span className="text-lg font-bold">Fleet Manager</span>
-        </div>
-        <div className="navbar-end gap-2">
+    <BrowserRouter>
+      <div className="min-h-screen bg-base-200">
+        <nav className="navbar bg-base-100 shadow px-6">
+          <div className="navbar-start">
+            <span className="text-lg font-bold">Fleet Manager</span>
+          </div>
+          <div className="navbar-end gap-2">
 
-        </div>
-      </nav>
-      {/* Build out our pages here. */}
-      <main className="p-6 max-w-6xl mx-auto">
-        <Routes>
-          {/* each route is going to take a component/element, and a path */}
-          <Route path="/" element={<VehiclesAndDriversPage />}/>
-        </Routes>
-      </main>
-    </div>
+          </div>
+        </nav>
+        {/* Build out our pages here. */}
+        <main className="p-6 max-w-6xl mx-auto">
+          <Routes>
+            {/* each route is going to take a component/element, and a path */}
+            <Route path="/" element={<VehiclesAndDriversPage />}/>
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
