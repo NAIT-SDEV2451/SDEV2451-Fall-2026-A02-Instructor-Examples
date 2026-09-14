@@ -89,6 +89,11 @@ export default function TripForm({
             })}
           </select>
         </div>
+        {/* Input for our locations */}
+        <div className="divider divider-start text-xs mt-0 mb-0 text-base-content/50">Route Locations</div>
+        <div className="grid grid-cols-1 gap-4">
+
+        </div>
         <div className="card-actions justify-end pt-2">
           <button type="submit" className="btn btn-primary">Create Trip</button>
         </div>
