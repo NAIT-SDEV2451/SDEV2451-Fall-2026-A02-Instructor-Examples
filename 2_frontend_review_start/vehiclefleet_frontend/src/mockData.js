@@ -5,7 +5,12 @@ export const VEHICLES = [
 ]
 
 export const DRIVERS = [
-  { id: 1, name: "Jane Smith",   license_number: "DL-99887", phone: "555-0100", email: "jane@example.com"  },
+  { id: 1,
+    name: "Jane Smith",
+    license_number: "DL-99887",
+    phone: "555-0100",
+    email: "jane@example.com"  },
+
   { id: 2, name: "Bob Johnson",  license_number: "DL-44521", phone: "555-0200", email: "bob@example.com"   },
   { id: 3, name: "Maria Garcia", license_number: "DL-77634", phone: "555-0300", email: "maria@example.com" },
 ]

@@ -43,5 +43,24 @@ export default function TripForm({
     setForm(EMPTY_FORM)
   }
 
-  return <></>
+  return <div className="card bg-base-100 shadow-md w-full max-w-xl">
+      <div className="card-body gap-5">
+        <form  className="flex flex-col gap-5">
+          <div className="form-control w-full">
+            <div className="label pb-1">
+              <span className="label-text font-medium">Vehicle</span>
+            </div>
+            <select name="vehicle"
+              className="select select-bordered w-full" required>
+              <option value="" disabled>Select a vehicle</option>
+
+            </select>
+          </div>
+
+          <div className="card-actions justify-end pt-2">
+            <button type="submit" className="btn btn-primary">Create Trip</button>
+          </div>
+        </form>
+      </div>
+    </div>
 }
