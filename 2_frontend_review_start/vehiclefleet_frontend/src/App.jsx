@@ -34,7 +34,6 @@ function App() {
             >
               Create Trip
             </NavLink>
-
           </div>
         </nav>
         {/* Build out our pages here. */}

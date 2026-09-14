@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 // create an empty form state that's a constant
+// because of hte handle we're going to use these key names as the names
+// of the inputs/selects.
 const EMPTY_FORM = {
   vehicle: '',
   driver: '',
@@ -19,6 +21,7 @@ export default function TripForm({
 }) {
   // some form state.
   const [form, setForm] = useState(EMPTY_FORM)
+
   // form the variable you'll use for the information
   // setForm, this changes form variable when called with contents.
   // EMPTY_FORM is the orig val of form
@@ -50,10 +53,19 @@ export default function TripForm({
           <div className="label pb-1">
             <span className="label-text font-medium">Vehicle</span>
           </div>
-          <select name="vehicle"
+          {/* the onChange is the js change event  */}
+          <select
+            name="vehicle"
+            value={form.vehicle}
+            onChange={handleChange}
             className="select select-bordered w-full" required>
             <option value="" disabled>Select a vehicle</option>
-
+            {/* Loop over the options of vehicles */}
+            {vehicles.map((vehicle) => {
+              return <option key={vehicle.id} value={vehicle.id}>
+                {vehicle.year} {vehicle.make} {vehicle.model} - {vehicle.license_plate}
+              </option>
+            })}
           </select>
         </div>
         {/* Adding to this a bit later on. */}
