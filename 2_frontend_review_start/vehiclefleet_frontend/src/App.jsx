@@ -21,7 +21,13 @@ function App() {
             <span className="text-lg font-bold">Fleet Manager</span>
           </div>
           <div className="navbar-end gap-2">
-
+            {/* what we're going to do add some links */}
+            <NavLink
+              to="/"
+              className={`btn btn-sm btn-ghost`}
+            >
+              Vehicles and Drivers
+            </NavLink>
           </div>
         </nav>
         {/* Build out our pages here. */}
