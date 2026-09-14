@@ -27,7 +27,11 @@ function App() {
         <main className="p-6 max-w-6xl mx-auto">
           <Routes>
             {/* each route is going to take a component/element, and a path */}
-            <Route path="/" element={<VehiclesAndDriversPage />}/>
+            <Route
+              path="/"
+              element={<VehiclesAndDriversPage />}
+            />
+
           </Routes>
         </main>
       </div>
