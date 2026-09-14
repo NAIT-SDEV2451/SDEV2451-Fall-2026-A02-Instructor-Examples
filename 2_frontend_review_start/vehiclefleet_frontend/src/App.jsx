@@ -10,6 +10,7 @@ import {
 
 // import our pages
 import VehiclesAndDriversPage from './pages/VehiclesAndDriversPage'
+import CreateTripPage from './pages/CreateTripPage'
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
             <Route
               path="/"
               element={<VehiclesAndDriversPage />}
+            />
+            <Route
+              path="/trips/new"
+              element={<CreateTripPage />}
             />
 
           </Routes>
