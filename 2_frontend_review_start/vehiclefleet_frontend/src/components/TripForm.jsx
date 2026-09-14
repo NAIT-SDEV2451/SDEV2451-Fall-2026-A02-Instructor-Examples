@@ -92,7 +92,23 @@ export default function TripForm({
         {/* Input for our locations */}
         <div className="divider divider-start text-xs mt-0 mb-0 text-base-content/50">Route Locations</div>
         <div className="grid grid-cols-1 gap-4">
-
+          {/* is going to be the control for the input */}
+          <div className="form-control w-full">
+            {/* the label */}
+            <div className="label pb-1">
+              <span className="label-text font-medium">Start Location</span>
+            </div>
+            {/* the input that will handle */}
+            <input
+              type="text"
+              name="start_location"
+              value={form.start_location}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+              placeholder="e.g. Warehouse a"
+              required
+            />
+          </div>
         </div>
         <div className="card-actions justify-end pt-2">
           <button type="submit" className="btn btn-primary">Create Trip</button>
