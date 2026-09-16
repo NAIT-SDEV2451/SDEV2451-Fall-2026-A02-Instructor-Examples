@@ -96,13 +96,30 @@ export default function TripForm({
           <div className="form-control w-full">
             {/* the label */}
             <div className="label pb-1">
-              <span className="label-text font-medium">Start Location</span>
+              <label className="label-text font-medium">Start Location</label>
             </div>
             {/* the input that will handle */}
             <input
               type="text"
               name="start_location"
               value={form.start_location}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+              placeholder="e.g. Warehouse a"
+              required
+            />
+          </div>
+          {/* end location do it! */}
+          <div className="form-control w-full">
+            {/* the label */}
+            <div className="label pb-1">
+              <label className="label-text font-medium">End Location</label>
+            </div>
+            {/* the input that will handle */}
+            <input
+              type="text"
+              name="end_location"
+              value={form.end_location}
               onChange={handleChange}
               className="input input-bordered w-full"
               placeholder="e.g. Warehouse a"
