@@ -24,7 +24,6 @@ function VehiclesAndDriversPage() {
           ? <span className='loading loading-spinner loading-md'></span>
           : <VehicleList vehicles={vehicles} />
         }
-
       </section>
 
       <section>
