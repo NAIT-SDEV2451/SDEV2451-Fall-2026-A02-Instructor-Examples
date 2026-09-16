@@ -48,7 +48,7 @@ export default function TripForm({
 
   return <div className="card bg-base-100 shadow-md w-full max-w-xl">
     <div className="card-body gap-5">
-      <form  className="flex flex-col gap-5">
+      <form className="flex flex-col gap-5">
         {/* Vehicle select */}
         <div className="form-control w-full">
           <div className="label pb-1">
@@ -132,7 +132,24 @@ export default function TripForm({
             />
           </div>
         </div>
+        {/* Scheduling title  */}
+        <div className="divider divider-start text-xs mt-0 mb-0 text-base-content/50">
+          Scheduling
+        </div>
+        {/* Start time input
+        make this input controlled with state.
+        */}
+        <div className="form-control w-full">
+          <div className="label pb-1">
+            <span className="label-text font-medium">Start Time</span>
+          </div>
+          <input
+            type="datetime-local"
 
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
         <div className="card-actions justify-end pt-2">
           <button type="submit" className="btn btn-primary">Create Trip</button>
         </div>
