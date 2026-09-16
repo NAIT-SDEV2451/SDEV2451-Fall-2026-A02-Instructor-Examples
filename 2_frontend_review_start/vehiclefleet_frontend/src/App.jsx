@@ -48,7 +48,6 @@ function App() {
               path="/trips/new"
               element={<CreateTripPage />}
             />
-
           </Routes>
         </main>
       </div>

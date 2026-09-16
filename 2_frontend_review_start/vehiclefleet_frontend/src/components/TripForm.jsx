@@ -49,6 +49,7 @@ export default function TripForm({
   return <div className="card bg-base-100 shadow-md w-full max-w-xl">
     <div className="card-body gap-5">
       <form  className="flex flex-col gap-5">
+        {/* Vehicle select */}
         <div className="form-control w-full">
           <div className="label pb-1">
             <span className="label-text font-medium">Vehicle</span>
@@ -69,7 +70,7 @@ export default function TripForm({
           </select>
         </div>
         {/* Adding to this a bit later on. */}
-        {/* FOr the driver */}
+        {/* driver Select */}
         <div className="form-control w-full">
           <div className="label pb-1">
             <span className="label-text font-medium">Driver</span>
