@@ -145,7 +145,9 @@ export default function TripForm({
           </div>
           <input
             type="datetime-local"
-
+            name="start_time"
+            value={form.value}
+            onChange={handleChange}
             className="input input-bordered w-full"
             required
           />
