@@ -1,7 +1,19 @@
 import TripList from '../components/TripList'
 import { TRIPS } from '../mockData'
 
+import {
+  useTrips
+} from "../hooks/useTrips"
+
+
 function TripsPage() {
+  const {
+    trips,
+    isLoading,
+    isError,
+    error
+  } = useTrips()
+
   return (
     <div>
       <h2 className="text-xl font-semibold mb-3">Trips</h2>
