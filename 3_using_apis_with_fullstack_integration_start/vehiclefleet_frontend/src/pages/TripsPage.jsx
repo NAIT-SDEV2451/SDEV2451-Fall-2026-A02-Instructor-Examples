@@ -26,7 +26,17 @@ function TripsPage() {
   }
 
   // one for error state.
-
+  if (isError) {
+    return <div>
+      <h2 className="text-xl font-semibold mb-3">
+        Trips
+      </h2>
+      <div className="text-md">
+        Error occurred please contact blah
+        {error.toString()}
+      </div>
+    </div>
+  }
 
 
   return (
