@@ -16,3 +16,13 @@ export async function fetchVehicles() {
   // if it's here it should be a good request.
   return response.json()
 }
+
+export async function fetchDrivers() {
+  const response = await fetch(`${BASE_URL}/drivers/`)
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch drivers")
+  }
+
+  return response.json()
+}
