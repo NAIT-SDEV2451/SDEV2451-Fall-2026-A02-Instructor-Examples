@@ -20,7 +20,6 @@ function CreateTripPage() {
   const { drivers } = useDrivers()
 
   function handleSubmit(formData) {
-
     console.log('New trip submitted:', formData)
 
     createTripMutation(
