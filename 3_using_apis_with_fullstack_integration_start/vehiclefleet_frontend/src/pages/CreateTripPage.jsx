@@ -32,6 +32,15 @@ function CreateTripPage() {
     )
   }
 
+  // let's add a guard
+  if (isPending) {
+    return <div>
+      <h2 className="text-xl font-semibold mb-4">Create a New Trip</h2>
+      <span className='loading loading-spinner loading-md'></span>
+    </div>
+  }
+
+
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">Create a New Trip</h2>
