@@ -17,17 +17,17 @@ function TripsPage() {
   // we're going to put a few guards
   // one for loading
   if (isLoading) {
-    return <div>
+    return (<div>
       <h2 className="text-xl font-semibold mb-3">
         Trips Loading...
       </h2>
       <span className='loading loading-spinner loading-md'></span>
-    </div>
+    </div>)
   }
 
   // one for error state.
   if (isError) {
-    return <div>
+    return (<div>
       <h2 className="text-xl font-semibold mb-3">
         Trips
       </h2>
@@ -35,14 +35,14 @@ function TripsPage() {
         Error occurred please contact blah
         {error.toString()}
       </div>
-    </div>
+    </div>)
   }
 
 
   return (
     <div>
       <h2 className="text-xl font-semibold mb-3">Trips</h2>
-      <TripList trips={TRIPS} />
+      <TripList trips={trips} />
     </div>
   )
 }
