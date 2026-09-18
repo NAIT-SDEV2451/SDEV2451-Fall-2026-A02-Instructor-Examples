@@ -13,6 +13,11 @@ function TripsPage() {
     isError,
     error
   } = useTrips()
+  console.log('currentState')
+  console.log("trips", trips)
+  console.log("isLoading", isLoading)
+  console.log("isError", isError)
+  console.log("error", error)
 
   // we're going to put a few guards
   // one for loading
