@@ -13,7 +13,6 @@ export function useDrivers() {
       queryFn: fetchDrivers
     })
 
-
     return {
       drivers,
       isLoading,
