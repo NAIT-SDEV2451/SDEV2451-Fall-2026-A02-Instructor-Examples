@@ -26,3 +26,13 @@ export async function fetchDrivers() {
 
   return response.json()
 }
+
+export async function fetchTrips() {
+  const response = await fetch(`${BASE_URL}/trips/`)
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch trips")
+  }
+
+  return response.json()
+}
