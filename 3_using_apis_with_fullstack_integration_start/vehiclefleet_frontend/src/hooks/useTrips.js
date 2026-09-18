@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { fetchTrips } from "../api/fleet";
 
-export function useDrivers() {
+export function useTrips() {
     const {
       data: trips = [],
       isLoading,
