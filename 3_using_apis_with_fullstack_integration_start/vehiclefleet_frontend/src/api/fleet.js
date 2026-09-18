@@ -26,12 +26,28 @@ export async function fetchDrivers() {
 
   return response.json()
 }
-
+// let's do the trips.
 export async function fetchTrips() {
   const response = await fetch(`${BASE_URL}/trips/`)
 
   if (!response.ok) {
     throw new Error("Failed to fetch trips")
+  }
+
+  return response.json()
+}
+
+// let's also make the post request
+export async function createTrip(data) {
+  const response = await fetch(`${BASE_URL}/trips/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    if (!response.ok) {
+    throw new Error("Failed to create trips")
   }
 
   return response.json()
