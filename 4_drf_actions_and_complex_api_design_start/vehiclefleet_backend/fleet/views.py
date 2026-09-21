@@ -52,12 +52,22 @@ class FleetStatsView(APIView):
             .order_by("week")
             .values_list("week", "avg_distance")
         )
+        formatted_distances = []
+        for avg_dist in weekly_avg_dist:
+
+            formatted_distances.append(
+                {
+                    "week": avg_dist[0].strftime("%Y-%m-%d"),
+                    "avg_distance": round(float(avg_dist[1]), 2),
+                }
+            )
 
         # order by the week
         # see the values list.
 
         return Response(
             {
+                "average_dist_per_week": formatted_distances,
                 "avg_trip_distance": average_trip_dist,
                 "total_vehicles": Vehicle.objects.count(),
                 "total_drivers": Driver.objects.count(),
