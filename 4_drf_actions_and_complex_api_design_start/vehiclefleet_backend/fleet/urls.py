@@ -9,6 +9,10 @@ router.register("drivers", DriverViewSet, basename="driver")
 router.register("trips", TripViewSet, basename="trip")
 
 urlpatterns = [
-    path("stats/", FleetStatsView.as_view(), name="fleet-stats"),
+    path(
+        "stats/",
+        FleetStatsView.as_view(),
+        name="fleet-stats",
+    ),
     path("", include(router.urls)),
 ]
