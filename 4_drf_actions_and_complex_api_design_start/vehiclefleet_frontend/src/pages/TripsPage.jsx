@@ -1,4 +1,6 @@
 import TripList from '../components/TripList'
+// import stat card
+import StatCard from '../components/StatCard'
 import { useTrips } from '../hooks/useTrips'
 
 const STAT_CARDS = [
@@ -14,8 +16,16 @@ function TripsPage() {
   return (
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* let's loop throug hte stat cards */}
+        {STAT_CARDS.map(({key, label, color}) => {
+          return <StatCard key={key}
+            label={label}
+            color={color}
+            value={100}
+          />
+        })}
       </div>
-      {/* our existing  */}
+      {/* our existing trips list */}
       <div>
         <h2 className="text-xl font-semibold mb-3">Trips</h2>
         {isLoading
