@@ -37,7 +37,7 @@ class FleetStatsView(APIView):
         # how we're going to do this.
         # filter all trip objects within the last 12 months.
         twelve_months_ago = timezone.now() - timedelta(weeks=52)  # minus 52 weeks.
-        weekly_avg_dist = (
+        weekly_avg_dist = list(
             Trip.objects.filter(
                 start_time__gte=twelve_months_ago,  # __gte is part of the orm in a filter
                 distance__isnull=False,  # __isnull is part of the orm in a filter
@@ -46,9 +46,13 @@ class FleetStatsView(APIView):
                 week=TruncWeek("start_time"),
             )
             .values("week")
+            .annotate(  # annotatiion for distance (average it)
+                avg_distance=Avg("distance")
+            )
+            .order_by("week")
+            .values_list("week", "avg_distance")
         )
 
-        # annotatiion for distance (average it)
         # order by the week
         # see the values list.
 
