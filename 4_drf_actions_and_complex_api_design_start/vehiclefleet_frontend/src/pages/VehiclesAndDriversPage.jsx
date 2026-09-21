@@ -1,9 +1,14 @@
+// inputs usestate
+import { useState } from 'react'
+
 import VehicleList from '../components/VehicleList'
 import DriverList from '../components/DriverList'
 import { useVehicles } from '../hooks/useVehicles'
 import { useDrivers } from '../hooks/useDrivers'
 
 function VehiclesAndDriversPage() {
+  const [vehicleSearch, setVehicleSearch] = useState("")
+
   const { vehicles, isLoading: loadingVehicles } = useVehicles()
   const { drivers, isLoading: loadingDrivers } = useDrivers()
 
@@ -16,8 +21,9 @@ function VehiclesAndDriversPage() {
           type="text"
           placeholder="Search by make model or plate"
           className='input input-bordered w-full max-w-sm mb-3'
+          value={vehicleSearch}
+          onChange={(event)=> setVehicleSearch(event.target.value)}
         />
-
         {loadingVehicles
           ? <span className="loading loading-spinner loading-md" />
           : <VehicleList vehicles={vehicles} />
