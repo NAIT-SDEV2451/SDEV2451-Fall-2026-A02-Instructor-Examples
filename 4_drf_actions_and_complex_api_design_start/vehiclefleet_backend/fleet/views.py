@@ -16,7 +16,7 @@ class FleetStatsView(APIView):
         # let's get average distance for all trips.
         # we're going to use .aggregate for this because it'll be on the
         # entire queryset.
-        average_dist = Trip.objects.aggregate(
+        average_trip_dist = Trip.objects.aggregate(
             # we're creating a field called average distance
             average_distance=Avg("distance"),
             # we are getting the average of distance on the trip
@@ -25,7 +25,7 @@ class FleetStatsView(APIView):
 
         return Response(
             {
-                "avg_trip_distance": average_dist,
+                "avg_trip_distance": average_trip_dist,
                 "total_vehicles": Vehicle.objects.count(),
                 "total_drivers": Driver.objects.count(),
                 "total_trips": Trip.objects.count(),
