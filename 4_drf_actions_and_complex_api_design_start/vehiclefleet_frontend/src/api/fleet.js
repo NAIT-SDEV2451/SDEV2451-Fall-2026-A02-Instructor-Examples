@@ -5,8 +5,6 @@ export async function fetchVehicles({search}) {
   if (search) {
     url = `${url}?search=${encodeURIComponent(search)}`
   }
-  console.log(search)
-  console.log(url)
   const response = await fetch(url)
   if (!response.ok) throw new Error('Failed to fetch vehicles')
   return response.json()
