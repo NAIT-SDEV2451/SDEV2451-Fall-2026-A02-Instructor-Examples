@@ -1,4 +1,5 @@
-from django.db.models import Count
+# we import the Avg from models.
+from django.db.models import Count, Avg
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,13 +10,27 @@ from fleet.serializers import DriverSerializer, TripSerializer, VehicleSerialize
 
 
 class FleetStatsView(APIView):
-
+    # we're going to add a some fields so that we can
+    # get some more stats.
     def get(self, request):
-        return Response({
-            "total_vehicles": Vehicle.objects.count(),
-            "total_drivers": Driver.objects.count(),
-            "total_trips": Trip.objects.count(),
-        })
+        # let's get average distance for all trips.
+        # we're going to use .aggregate for this because it'll be on the
+        # entire queryset.
+        average_dist = Trip.objects.aggregate(
+            # we're creating a field called average distance
+            average_distance=Avg("distance"),
+            # we are getting the average of distance on the trip
+        )["average_distance"]
+        # in the square brackets we're just getting the number.
+
+        return Response(
+            {
+                "avg_trip_distance": average_dist,
+                "total_vehicles": Vehicle.objects.count(),
+                "total_drivers": Driver.objects.count(),
+                "total_trips": Trip.objects.count(),
+            }
+        )
 
 
 class VehicleViewSet(ModelViewSet):
