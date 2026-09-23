@@ -1,3 +1,6 @@
+// let's import link
+import { Link } from 'react-router-dom'
+
 function TripList({ trips }) {
   return (
     <div className="overflow-x-auto">
@@ -11,6 +14,8 @@ function TripList({ trips }) {
             <th>To</th>
             <th>Start Time</th>
             <th>Distance (km)</th>
+            {/* add an extra column */}
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +31,13 @@ function TripList({ trips }) {
                 {trip.distance ?? (
                   <span className="badge badge-warning badge-sm">In progress</span>
                 )}
+              </td>
+              {/* let's add a button ti view */}
+              <td>
+                <Link
+                  to={`/trips/${trip.id}`}
+                  className="btn btn-xs btn-ghost"
+                >View</Link>
               </td>
             </tr>
           ))}
