@@ -28,7 +28,7 @@ class FleetStatsView(APIView):
             average_distance=Avg("distance"),
             # we are getting the average of distance on the trip
         )["average_distance"]
-        # in the square brackets we're just getting the number.
+        # in the square brackets we're just getting the number from the dictionary
 
         # annotations and groupby.
         # we're going to get the weekly average distance for the last
@@ -54,7 +54,6 @@ class FleetStatsView(APIView):
         )
         formatted_distances = []
         for avg_dist in weekly_avg_dist:
-
             formatted_distances.append(
                 {
                     "week": avg_dist[0].strftime("%Y-%m-%d"),
@@ -68,7 +67,7 @@ class FleetStatsView(APIView):
         return Response(
             {
                 "average_dist_per_week": formatted_distances,
-                "avg_trip_distance": average_trip_dist,
+                "avg_trip_distance": round(average_trip_dist, 2),
                 "total_vehicles": Vehicle.objects.count(),
                 "total_drivers": Driver.objects.count(),
                 "total_trips": Trip.objects.count(),
