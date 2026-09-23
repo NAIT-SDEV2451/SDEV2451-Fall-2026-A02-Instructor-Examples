@@ -3,9 +3,21 @@ import {
 } from 'recharts'
 
 export default function AverageDistanceChart({data}) {
+  const formatWeek = (isoDate) => {
+    const date = new Date(isoDate)
+    // format it with to local date string
+    return date.toLocaleDateString('en-CA', {
+      month: "short",
+      day: '2-digit'
+    })
+  }
+
   // reshaping of the data
   const chartData = data.map((entry) => {
-    return entry
+    return {
+      week: formatWeek(entry.week),
+      avg_distance: entry.avg_distance
+    }
   })
 
   return <div className="card bg-base-100 shadow-md">
@@ -39,9 +51,7 @@ export default function AverageDistanceChart({data}) {
             fill="red"
             radius={[5,5,0,0]}
           />
-
         </BarChart>
-
       </ResponsiveContainer>
 
     </div>
