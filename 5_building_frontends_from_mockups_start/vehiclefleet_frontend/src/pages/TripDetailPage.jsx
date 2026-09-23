@@ -1,5 +1,6 @@
 import BackButton from "../components/BackButton"
 import TripMap from "../components/TripMap"
+import TripInfo from "../components/TripInfo"
 
 import { TRIPS } from "../mockData"
 
@@ -35,5 +36,7 @@ export default function TripDetailPage() {
       <button className="btn btn-outline">Complete Trip</button>
       <button className="btn btn-outline btn-error">Can't be Delivered</button>
     </div>
+    {/* Trip info the 3 cards */}
+    <TripInfo trip={trip} />
   </div>
 }
