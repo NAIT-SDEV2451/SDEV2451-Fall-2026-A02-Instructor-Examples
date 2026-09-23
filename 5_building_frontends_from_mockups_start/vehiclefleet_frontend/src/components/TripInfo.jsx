@@ -19,6 +19,16 @@ export default function TripInfo({trip}) {
         `${vehicle_detail.make} ${vehicle_detail.model} ${vehicle_detail.year}`
       }
     />
+    <TripCard
+      label="Driver"
+      title={driver_detail.name}
+      subtitle={`License ${driver_detail.license_number}`}
+    />
+    <TripCard
+      label="Route"
+      title={`${start_location} to ${end_location}`}
+      subtitle={`${distance ? `${distance} km`: "in Progress"}`}
+    />
   </div>
 
 }
