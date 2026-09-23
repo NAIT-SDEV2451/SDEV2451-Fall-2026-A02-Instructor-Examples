@@ -29,5 +29,11 @@ export default function TripDetailPage() {
       startLocation={trip.start_location}
       endLocation={trip.end_location}
     />
+    {/* buttons */}
+    <div className="flex flex-wrap gap-2">
+      <button className="btn btn-outline">Get Directions</button>
+      <button className="btn btn-outline">Complete Trip</button>
+      <button className="btn btn-outline btn-error">Can't be Delivered</button>
+    </div>
   </div>
 }
