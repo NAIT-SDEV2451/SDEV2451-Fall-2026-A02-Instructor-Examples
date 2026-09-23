@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
 import VehiclesAndDriversPage from './pages/VehiclesAndDriversPage'
 import TripsPage from './pages/TripsPage'
+import TripDetailPage from './pages/TripDetailPage'
 import CreateTripPage from './pages/CreateTripPage'
 
 const queryClient = new QueryClient()
@@ -48,6 +49,7 @@ function App() {
           <main className="p-6 max-w-6xl mx-auto">
             <Routes>
               <Route path="/" element={<VehiclesAndDriversPage />} />
+              <Route path="/trips/:id" element={<TripDetailPage />} />
               <Route path="/trips" element={<TripsPage />} />
               <Route path="/trips/new" element={<CreateTripPage />} />
             </Routes>
