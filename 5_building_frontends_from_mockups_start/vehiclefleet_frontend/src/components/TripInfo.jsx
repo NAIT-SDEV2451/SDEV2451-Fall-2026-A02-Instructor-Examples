@@ -27,7 +27,7 @@ export default function TripInfo({trip}) {
     <TripCard
       label="Route"
       title={`${start_location} to ${end_location}`}
-      subtitle={`${distance ? `${distance} km`: "in Progress"}`}
+      subtitle={`${distance ? `${distance} km`: "in Progress"} started ${start_time}`}
     />
   </div>
 
