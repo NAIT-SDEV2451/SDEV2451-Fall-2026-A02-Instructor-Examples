@@ -13,13 +13,13 @@ import { TRIPS } from "../mockData"
 const STATUS_BADGE = {
   pending: "badge-ghost",
   in_progress: "badge-info",
-  complete: "badge-success",
+  completed: "badge-success",
   failed: "badge-error"
 }
 const STATUS_LABEL = {
   pending: "Pending",
   in_progress: "In Progress",
-  complete: "Complete",
+  completed: "Complete",
   failed: "Failed"
 }
 
@@ -34,10 +34,10 @@ export default function TripDetailPage() {
     completeTripMutation,
   } = useTripDetails(id) // pass the id.
 
-  console.log("trip", trip)
+  const start = () => {
+    startTripMutation.mutate()
+  }
 
- // let's create a boolean fo in progress
-  const isInProgress = trip.end_time === null
 
   // let's create the guards for the loading and error states.
   if (isLoading) {
@@ -60,8 +60,10 @@ export default function TripDetailPage() {
         >
           Trip #{trip.id}
         </h1>
-        {isInProgress
-          && <span className="badge badge-info">Is in Progress</span>}
+
+        <span className={`badge ${STATUS_BADGE[trip.status]}`}>
+          {STATUS_LABEL[trip.status]}
+        </span>
       </div>
 
     </div>
@@ -73,8 +75,21 @@ export default function TripDetailPage() {
     {/* buttons */}
     <div className="flex flex-wrap gap-2">
       <button className="btn btn-outline">Get Directions</button>
-      <button className="btn btn-outline">Complete Trip</button>
-      <button className="btn btn-outline btn-error">Can't be Delivered</button>
+      {/* we're changing the buttons based on the status */}
+      { trip.status === "pending" &&
+        <button
+          className="btn btn-outline"
+          onClick={start}
+        >Start Trip</button>
+      }
+
+      { trip.status === "in_progress" &&
+        <>
+           <button className="btn btn-outline">Complete Trip</button>
+            <button className="btn btn-outline btn-error">Can't be Delivered</button>
+        </>
+      }
+
     </div>
     {/* Trip info the 3 cards */}
     <TripInfo trip={trip} />
