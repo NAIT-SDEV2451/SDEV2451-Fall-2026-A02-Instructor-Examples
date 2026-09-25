@@ -27,7 +27,15 @@ export default function TripDetailPage() {
   const isInProgress = trip.end_time === null
 
   // let's create the guards for the loading and error states.
+  if (isLoading) {
+    return <span className="loading loading-spinner, loading-lg"></span>
+  }
 
+  if (isError) {
+    return <p className="text-error">
+      Trip not found, error: {error.toString()}
+    </p>
+  }
 
   return <div className="flex flex-col gap-6">
     <div>
