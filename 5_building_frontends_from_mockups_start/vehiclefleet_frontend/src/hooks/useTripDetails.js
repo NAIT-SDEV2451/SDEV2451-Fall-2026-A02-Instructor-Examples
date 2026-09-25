@@ -36,8 +36,16 @@ export function useTripDetails(id) {
     }
   })
 
-
   // mutation to end the trip
+  const completeTripMutation = useMutation({
+    mutationFn: () => completeTrip(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['trip-map', id]
+      })
+    }
+  })
+
 
   return {
     trip,
@@ -45,5 +53,6 @@ export function useTripDetails(id) {
     isError,
     error,
     startTripMutation,
+    completeTripMutation,
   }
 }
