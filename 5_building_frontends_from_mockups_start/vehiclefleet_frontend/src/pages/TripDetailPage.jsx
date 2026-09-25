@@ -38,6 +38,10 @@ export default function TripDetailPage() {
     startTripMutation.mutate()
   }
 
+  const complete = () => {
+    completeTripMutation.mutate()
+  }
+
   // let's create the guards for the loading and error states.
   if (isLoading) {
     return <span className="loading loading-spinner, loading-lg"></span>
@@ -75,17 +79,20 @@ export default function TripDetailPage() {
     <div className="flex flex-wrap gap-2">
       <button className="btn btn-outline">Get Directions</button>
       {/* we're changing the buttons based on the status */}
-      { trip.status === "pending" &&
+      {trip.status === "pending" &&
         <button
           className="btn btn-outline"
           onClick={start}
         >Start Trip</button>
       }
 
-      { trip.status === "in_progress" &&
+      {trip.status === "in_progress" &&
         <>
-           <button className="btn btn-outline">Complete Trip</button>
-            <button className="btn btn-outline btn-error">Can't be Delivered</button>
+          <button
+            className="btn btn-outline"
+            onClick={complete}
+          >Complete Trip</button>
+          <button className="btn btn-outline btn-error">Can't be Delivered</button>
         </>
       }
 
