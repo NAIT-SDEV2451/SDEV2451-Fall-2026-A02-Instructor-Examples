@@ -23,7 +23,9 @@ export function useTripDetails(id) {
     error
   } = useQuery({
     queryKey: ['trip-map', id],
-    queryFn: () => fetchTripMap(id)
+    queryFn: () => fetchTripMap(id),
+    // in case the id is not defined
+    enabled: !!id
   })
 
   // mutation to start the trip
