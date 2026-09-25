@@ -15,6 +15,8 @@ from rest_framework.viewsets import ModelViewSet
 from fleet.models import Driver, Trip, Vehicle
 from fleet.serializers import DriverSerializer, TripSerializer, VehicleSerializer
 
+from fleet.pagination import TripPagination
+
 
 class FleetStatsView(APIView):
     """
@@ -74,6 +76,7 @@ class TripViewSet(ModelViewSet):
     """ViewSet — full CRUD for Trip."""
 
     serializer_class = TripSerializer
+    pagination_class = TripPagination
 
     def get_queryset(self):
         return Trip.objects.select_related("vehicle", "driver").all()
