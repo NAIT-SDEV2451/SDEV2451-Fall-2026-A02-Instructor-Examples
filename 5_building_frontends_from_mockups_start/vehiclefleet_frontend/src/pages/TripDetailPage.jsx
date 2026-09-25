@@ -38,7 +38,6 @@ export default function TripDetailPage() {
     startTripMutation.mutate()
   }
 
-
   // let's create the guards for the loading and error states.
   if (isLoading) {
     return <span className="loading loading-spinner, loading-lg"></span>
