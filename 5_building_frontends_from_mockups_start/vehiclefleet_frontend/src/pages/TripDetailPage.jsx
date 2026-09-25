@@ -10,6 +10,19 @@ import { useTripDetails } from "../hooks/useTripDetails"
 
 import { TRIPS } from "../mockData"
 
+const STATUS_BADGE = {
+  pending: "badge-ghost",
+  in_progress: "badge-info",
+  complete: "badge-success",
+  failed: "badge-error"
+}
+const STATUS_LABEL = {
+  pending: "Pending",
+  in_progress: "In Progress",
+  complete: "Complete",
+  failed: "Failed"
+}
+
 export default function TripDetailPage() {
   const { id } = useParams()
   const {
@@ -21,9 +34,9 @@ export default function TripDetailPage() {
     completeTripMutation,
   } = useTripDetails(id) // pass the id.
 
-  // the static data
-  // const trip = TRIPS[4] // this is so that we can see the inprogress
-  // let's create a boolean fo in progress
+  console.log("trip", trip)
+
+ // let's create a boolean fo in progress
   const isInProgress = trip.end_time === null
 
   // let's create the guards for the loading and error states.
