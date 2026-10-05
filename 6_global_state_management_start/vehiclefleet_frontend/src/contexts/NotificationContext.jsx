@@ -28,10 +28,13 @@ export default function NotificationProvider({ children }) {
     setNotification(null)
   }
 
+  // the values that are being exposed here
+  // the items in the object of the prop value
   return <NotificationContext value={{
-    showError, showSuccess, hide
+    showError, showSuccess, hide // these are being exposed
   }}>
-    <Toast />
+    {/*  */}
+    <Toast notification={notification} hide={hide}/>
     {children}
   </NotificationContext>
 }
