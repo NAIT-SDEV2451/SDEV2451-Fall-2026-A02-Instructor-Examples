@@ -18,7 +18,7 @@ const STAT_CARDS = [
 
 function TripsPage() {
 
-  const {page, setTotalCount } = usePagination()
+  const { page, setTotalCount } = usePagination()
 
   // pass the page into the hook.
   const { trips, isLoading } = useTrips(page)
@@ -58,6 +58,7 @@ function TripsPage() {
           ? <span className="loading loading-spinner loading-md" />
           : <TripList trips={trips.results} />
         }
+        {/* LOOK NO PROPS PASSED IN! */}
         <TripsPagination />
       </div>
     </div>
