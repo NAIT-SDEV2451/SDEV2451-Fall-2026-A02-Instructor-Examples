@@ -28,9 +28,10 @@ export default function NotificationProvider({ children }) {
     setNotification(null)
   }
 
-
-  return <>
+  return <NotificationContext value={{
+    showError, showSuccess, hide
+  }}>
     <Toast />
     {children}
-  </>
+  </NotificationContext>
 }
