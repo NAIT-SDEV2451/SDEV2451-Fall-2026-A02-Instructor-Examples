@@ -7,7 +7,15 @@ export default function Toast({ notification, hide }) {
   // obj with also the type of message it is.
 
   // let's make it go away after 3 seconds
-  useEffect
+  useEffect(()=> {
+    if (!notification) {
+      return null
+    }
+    // add a timer
+    const timer = setTimeout(hide, AUTO_HIDE_MS)
+    // clean up.
+    return () => clearTimeout(timer)
+  }, [notification])
 
 
   // let's hide the notification if it's null.
