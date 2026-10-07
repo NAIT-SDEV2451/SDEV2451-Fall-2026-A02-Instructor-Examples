@@ -17,7 +17,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         fields = ["username", "email", "password", "role"]
         extra_kwargs = {
             "email": {"required": True},
-            "role": {"required": True},
+            "role": {"required": False},
         }
 
     # validate and make a password
