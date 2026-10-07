@@ -13,7 +13,12 @@ class UserRegistrationView(APIView):
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save()  # this calls create for new and update for existing instances
+            return Response(
+                {"message": "user registered successfully"},
+                status=status.HTTP_201_CREATED,
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # give the infromation
