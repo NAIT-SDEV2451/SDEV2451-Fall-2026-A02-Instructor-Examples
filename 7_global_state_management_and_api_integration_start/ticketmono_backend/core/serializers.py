@@ -25,5 +25,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         # over here you could add more validation
         return make_password(value)
 
+    # this is going to be called on save
     def create(self, validated_data):
         return CustomUser.objects.create(**validated_data)
