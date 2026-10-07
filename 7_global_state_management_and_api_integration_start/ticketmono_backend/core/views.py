@@ -25,3 +25,8 @@ class UserRegistrationView(APIView):
 class MeView(APIView):
     # we need to identify the user.
     permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        # the middleware in django converts the token
+        # into a user that we've signed up in our application
+        user = request.user
