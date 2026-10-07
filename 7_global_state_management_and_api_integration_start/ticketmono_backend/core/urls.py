@@ -6,4 +6,6 @@ from rest_framework_simplejwt.views import (
 
 from core.views import MeView, UserRegistrationView
 
-urlpatterns = []
+urlpatterns = [
+    path("register/", UserRegistrationView.as_view(), name="auth-register"),
+]
