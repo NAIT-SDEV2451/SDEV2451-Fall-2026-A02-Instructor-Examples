@@ -22,3 +22,6 @@ class UserRegistrationView(APIView):
 
 
 # give the infromation
+class MeView(APIView):
+    # we need to identify the user.
+    permission_classes = (IsAuthenticated,)
