@@ -41,6 +41,7 @@ AUTH_USER_MODEL = "core.CustomUser"
 
 # befor every request the middle ware goes
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -145,4 +146,6 @@ SIMPLE_JWT = {
 }
 
 # Cors headers
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]  # frontend
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]  # frontend
