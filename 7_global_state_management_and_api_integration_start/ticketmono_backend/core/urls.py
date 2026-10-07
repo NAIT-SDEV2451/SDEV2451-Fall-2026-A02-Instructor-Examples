@@ -8,4 +8,5 @@ from core.views import MeView, UserRegistrationView
 
 urlpatterns = [
     path("register/", UserRegistrationView.as_view(), name="auth-register"),
+    path("login/", TokenObtainPairView.as_view(), name="auth-login"),
 ]
