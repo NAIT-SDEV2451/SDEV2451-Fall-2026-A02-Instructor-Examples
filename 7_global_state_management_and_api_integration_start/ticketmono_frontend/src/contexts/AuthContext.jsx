@@ -20,14 +20,14 @@ import {
 export const AuthContext = createContext(null)
 
 // create the component that will provide this context
-export default function AuthProvider({children}) {
+export default function AuthProvider({ children }) {
   // we're going to have some state for the user and
   // the token
   const [user, setUser] = useState(
     // make the default use what's in localstorage
     () => getStoredUser()
   )
-  const [accessToken, setAccessToken] = useState(
+  const [accessToken, setAccessTokenState] = useState(
     // make the default use what's in localstorage
     () => getAccessToken()
   )
@@ -51,9 +51,24 @@ export default function AuthProvider({children}) {
       setAccessToken(tokens.access)
 
       // 3. fetch the user
+      const meResponse = await fetchMe()
+      if (!meResponse.ok) {
+        throw new Error("error fetching me")
+      }
+      const me = await meResponse.json()
+      // 4. I'm going to return me, and the tokens
+      return { tokens, me } // the params on onSuccess
     },
-    onSuccess: () => {
+    onSuccess: ({ tokens, me }) => {
       // set all the info recieved
+      // update our internal state
+      setAccessTokenState(tokens.access)
+      setUser(me)
+
+      // perist the other tokens in local storage
+      setAccessToken(tokens.access)
+      setRefreshToken(tokens.refresh)
+      setStoredUser(me)
     }
   })
 
