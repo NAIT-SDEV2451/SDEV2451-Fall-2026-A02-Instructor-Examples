@@ -61,11 +61,11 @@ export default function AuthProvider({ children }) {
     },
     onSuccess: ({ tokens, me }) => {
       // set all the info recieved
-      // update our internal state
+      // a. update our internal state
       setAccessTokenState(tokens.access)
       setUser(me)
 
-      // perist the other tokens in local storage
+      // b. perist the other tokens in local storage
       setAccessToken(tokens.access)
       setRefreshToken(tokens.refresh)
       setStoredUser(me)
@@ -80,7 +80,10 @@ export default function AuthProvider({ children }) {
 
   return <AuthContext.Provider value={{
     user,
-    accessToken
+    accessToken,
+    login: loginMutation.mutate, // perform the mutation
+    isLoggingIn: loginMutation.isPending, // loading state
+    error: loginMutation.error, // the error state.
   }}>
     {children}
   </AuthContext.Provider>
