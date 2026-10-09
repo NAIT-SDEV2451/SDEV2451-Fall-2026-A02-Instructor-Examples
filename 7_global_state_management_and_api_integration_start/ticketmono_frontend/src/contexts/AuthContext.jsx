@@ -35,11 +35,15 @@ export default function AuthProvider({children}) {
 
 
   // loginMutation
+
   // registrationMutation
   // logout (not a mutation)
 
 
-  return <AuthContext.Provider value={{}}>
+  return <AuthContext.Provider value={{
+    user,
+    accessToken
+  }}>
     {children}
   </AuthContext.Provider>
 }
