@@ -11,7 +11,9 @@ export default function LoginForm({ onSubmit }) {
   }
 
 
-  return <form className="flex flex-col gap-4">
+  return <form className="flex flex-col gap-4"
+    onSubmit={handleSubmit}
+  >
     <div className="form-control">
       <label className="label">
         <span className="label-text">Username</span>
