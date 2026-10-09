@@ -33,6 +33,8 @@ export default function LoginForm({ onSubmit }) {
         type="password"
         placeholder="Enter your password"
         className="input input-bordered w-full"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         required
       />
     </div>
