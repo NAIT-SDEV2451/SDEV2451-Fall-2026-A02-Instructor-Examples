@@ -37,8 +37,19 @@ export default function AuthProvider({children}) {
   // loginMutation
   const loginMutation = useMutation({
     mutationFn: async (credentials) => {
+      // credentials is going to be the username and password
       // 1. login the user
-      // 2. get and set tokens
+      const response = await loginUser(credentials)
+      if (!response.ok) {
+        const error = response.json()
+        throw new Error(error.detail ?? "error while logging in")
+      }
+
+      // 2. get and set access token
+      const tokens = await response.json()
+      // access is the key on the response object from the backend
+      setAccessToken(tokens.access)
+
       // 3. fetch the user
     },
     onSuccess: () => {
