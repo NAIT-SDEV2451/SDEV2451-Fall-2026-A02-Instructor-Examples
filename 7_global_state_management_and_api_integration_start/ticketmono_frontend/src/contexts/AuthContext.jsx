@@ -87,6 +87,16 @@ export default function AuthProvider({ children }) {
 
 
   // logout (not a mutation)
+  const clearAuthState = () => {
+    // clear the state in memory
+    setUser(null)
+    setAccessTokenState(null)
+    clearStoredTokens()
+  }
+
+  const logout = ()=> {
+    clearAuthState()
+  }
 
 
   return <AuthContext.Provider value={{
@@ -98,7 +108,7 @@ export default function AuthProvider({ children }) {
     register: registerMutation.mutate,
     isRegistering: registerMutation.isPending,
     registerError: registerMutation.error,
-
+    logout
   }}>
     {children}
   </AuthContext.Provider>
