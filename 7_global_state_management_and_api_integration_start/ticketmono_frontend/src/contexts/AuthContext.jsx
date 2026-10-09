@@ -21,8 +21,25 @@ export const AuthContext = createContext(null)
 
 // create the component that will provide this context
 export default function AuthProvider({children}) {
+  // we're going to have some state for the user and
+  // the token
+  const [user, setUser] = useState(
+    // make the default use what's in localstorage
+    () => getStoredUser()
+  )
+  const [accessToken, setAccessToken] = useState(
+    // make the default use what's in localstorage
+    () => getAccessToken()
+  )
 
-  return <>
+
+
+  // loginMutation
+  // registrationMutation
+  // logout (not a mutation)
+
+
+  return <AuthContext.Provider value={{}}>
     {children}
-  </>
+  </AuthContext.Provider>
 }
