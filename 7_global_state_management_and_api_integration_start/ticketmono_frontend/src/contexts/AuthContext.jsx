@@ -72,8 +72,19 @@ export default function AuthProvider({ children }) {
     }
   })
 
-
   // registrationMutation
+  const registerMutation = useMutation({
+    mutationFn: async (userData) => {
+      // user is the username, password, role, email
+      const response = await registerUser(userData)
+      if (!response.ok) {
+        // look at the readme for the error format.
+        throw new Error("Error while registering")
+      }
+      return response.json()
+    }
+  })
+
 
   // logout (not a mutation)
 
