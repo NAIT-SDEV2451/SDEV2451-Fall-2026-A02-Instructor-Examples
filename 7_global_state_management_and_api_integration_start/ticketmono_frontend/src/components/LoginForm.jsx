@@ -20,6 +20,8 @@ export default function LoginForm({ onSubmit }) {
         type="text"
         placeholder="Enter your username"
         className="input input-bordered w-full"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
         required
       />
     </div>
