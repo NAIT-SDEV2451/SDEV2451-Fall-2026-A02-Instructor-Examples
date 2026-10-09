@@ -22,7 +22,7 @@ export default async function apiClient(
     // if we have the token add it to the header (below ternary)
     ...(accessToken ? { 'Authorization': `Bearer ${accessToken}`} : {})
   }
-
+  console.log("our endpoint: ", `${BASE_URL}${endpoint}`)
   // 4. Let's make the request.
   let response = await fetch(
     `${BASE_URL}${endpoint}`, // this is the url that we passed in the beginning.

@@ -1,9 +1,30 @@
 // this will make the fetch requests
 import apiClient from "./client";
 
-export async function loginUser({username, password}) {
+export async function loginUser({ username, password }) {
   return apiClient('/auth/login/', {
     method: "POST",
-    body: JSON.stringify({username, password})
+    body: JSON.stringify({ username, password })
   })
+}
+
+export async function registerUser(
+  { username, password, role, email }
+) {
+  return apiClient('/auth/register/', {
+    method: "POST",
+    body: JSON.stringify({ username, password, role, email })
+  })
+}
+
+export async function refreshToken({ refresh }) {
+  return apiClient('/auth/token/refresh/', {
+    method: "POST",
+    body: JSON.stringify({ refresh })
+  })
+}
+
+export async function fetchMe() {
+  // header will be added, and default is a get
+  return apiClient('/auth/me/')
 }
