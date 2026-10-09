@@ -15,3 +15,14 @@ import {
   setRefreshToken,
   setStoredUser,
 } from '../api/tokenStorage'
+
+// let's create our context
+export const AuthContext = createContext(null)
+
+// create the component that will provide this context
+export default function AuthProvider({children}) {
+
+  return <>
+    {children}
+  </>
+}
