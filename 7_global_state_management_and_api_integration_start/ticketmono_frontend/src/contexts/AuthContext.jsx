@@ -35,8 +35,20 @@ export default function AuthProvider({children}) {
 
 
   // loginMutation
+  const loginMutation = useMutation({
+    mutationFn: async (credentials) => {
+      // 1. login the user
+      // 2. get and set tokens
+      // 3. fetch the user
+    },
+    onSuccess: () => {
+      // set all the info recieved
+    }
+  })
+
 
   // registrationMutation
+
   // logout (not a mutation)
 
 
