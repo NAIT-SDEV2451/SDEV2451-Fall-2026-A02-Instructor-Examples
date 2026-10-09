@@ -94,7 +94,11 @@ export default function AuthProvider({ children }) {
     accessToken,
     login: loginMutation.mutate, // perform the mutation
     isLoggingIn: loginMutation.isPending, // loading state
-    error: loginMutation.error, // the error state.
+    loginError: loginMutation.error, // the error state.
+    register: registerMutation.mutate,
+    isRegistering: registerMutation.isPending,
+    registerError: registerMutation.error,
+
   }}>
     {children}
   </AuthContext.Provider>
