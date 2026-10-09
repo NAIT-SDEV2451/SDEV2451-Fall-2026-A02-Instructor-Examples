@@ -25,9 +25,9 @@ export default async function apiClient(
 
   // 4. Let's make the request.
   let response = await fetch(
-    endpoint,
+    `${BASE_URL}${endpoint}`, // this is the url that we passed in the beginning.
     {
-      ...options, // that are passed int
+      ...options, // that are passed in
       headers: headers
     }
   )
@@ -38,6 +38,4 @@ export default async function apiClient(
 
   // 6. return the response (not awaited stays as promise)
   return response.json()
-
-
 }
