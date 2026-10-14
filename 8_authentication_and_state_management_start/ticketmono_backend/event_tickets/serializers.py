@@ -32,7 +32,12 @@ class OrganizerSerializer(ModelSerializer):
 
 
 class EventListReadOnlySerializer(ModelSerializer):
-    # the serializer will use these relationships for the serializer
+    # the serializer will use these representations for the fk fields
+    venue = VenueSerializer(read_only=True)
+    organizer = OrganizerSerializer(read_only=True)
+    ticket_tiers = TicketTierSerializer(
+        many=True, read_only=True  # because of the relationship
+    )
 
     class Meta:
         model = Event
