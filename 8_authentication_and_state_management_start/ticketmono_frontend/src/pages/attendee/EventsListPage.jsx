@@ -36,8 +36,6 @@ function EventsListPage() {
         { events.map((event)=> {
           return <EventCard key={event.id} event={event}/>
         })}
-
-
       </div>
     </div>
   )
