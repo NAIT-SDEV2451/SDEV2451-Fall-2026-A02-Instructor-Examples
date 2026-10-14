@@ -1,4 +1,7 @@
 export default function EventCard() {
+
+  // if you want to see the styling take a look at the docs
+  // https://daisyui.com/components/card/?lang=en
   return <div className="card bg-base-100 shadow">
     <div className="card-body">
       <h2 className="card-title">Summer Jazz Fest</h2>
