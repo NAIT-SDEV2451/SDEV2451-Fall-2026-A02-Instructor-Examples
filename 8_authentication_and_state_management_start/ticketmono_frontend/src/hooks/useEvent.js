@@ -5,6 +5,5 @@ export function useEvents() {
   return useQuery({
     queryKey: ['events'],
     queryFn: fetchEvents
-
   })
 }
