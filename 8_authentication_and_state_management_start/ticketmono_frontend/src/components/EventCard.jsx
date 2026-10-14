@@ -9,10 +9,10 @@ export default function EventCard({ event }) {
         July 15 2026, 7:00 pm
       </p>
       <p className="text-sm">
-        MSG
+        {event.venue.name}
       </p>
       <p className="text-sm text-base-content/60">
-        4 Pennsylvania ave New york....
+        {event.venue.address}
       </p>
       <div className="card-actions justify-end mt-2">
         <button className="btn btn-primary btn-sm">
