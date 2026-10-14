@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
     // Called by apiClient when it receives a 401 and needs a new access token.
     // Returns the new access token string so apiClient can retry the request.
     async function onTokenRefresh() {
-      const refresh = getRefreshToken()
+      const refresh = getRefreshToken() // from localStorage.
       if (!refresh) throw new Error('No refresh token.')
 
       const res = await refreshTokenApi({ refresh })
