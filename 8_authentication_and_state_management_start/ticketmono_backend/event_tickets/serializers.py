@@ -32,6 +32,7 @@ class OrganizerSerializer(ModelSerializer):
 
 
 class EventListReadOnlySerializer(ModelSerializer):
+    # the serializer will use these relationships for the serializer
 
     class Meta:
         model = Event
