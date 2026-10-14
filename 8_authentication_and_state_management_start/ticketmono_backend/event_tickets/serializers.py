@@ -29,3 +29,19 @@ class OrganizerSerializer(ModelSerializer):
     class Meta:
         model = User  # note: this is the auth user model.
         fields = ["id", "username", "role"]
+
+
+class EventListReadOnlySerializer(ModelSerializer):
+
+    class Meta:
+        model = Event
+        fields = [
+            # simple data fields
+            "id",
+            "name",
+            "date_time",
+            # fk relationships
+            "venue",
+            "organizer",
+            "ticket_tiers",
+        ]
