@@ -1,0 +1,21 @@
+export default function EventCard() {
+  return <div className="card bg-base-100 shadow">
+    <div className="card-body">
+      <h2 className="card-title">Summer Jazz Fest</h2>
+      <p className="text-sm text-base-content/60">
+        July 15 2026, 7:00 pm
+      </p>
+      <p className="text-sm">
+        MSG
+      </p>
+      <p className="text-sm text-base-content/60">
+        4 Pennsylvania ave New york....
+      </p>
+      <div className="card-actions justify-end mt-2">
+        <button className="btn btn-primary btn-sm">
+          Get Tickets
+        </button>
+      </div>
+    </div>
+  </div>
+}
