@@ -1,5 +1,6 @@
 
-function EventDetailsHeader() {
+
+export default function EventDetailsHeader() {
   return (
     <div className="bg-base-100 shadow rounded-box p-6 mb-6">
       <h1 className="text-3xl font-bold mb-2">Summer Jazz Festival</h1>
@@ -11,5 +12,3 @@ function EventDetailsHeader() {
     </div>
   )
 }
-
-export default EventDetailsHeader
