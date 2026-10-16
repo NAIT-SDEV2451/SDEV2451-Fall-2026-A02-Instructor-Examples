@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchEvents } from '../api/events'
+import { fetchEvent } from '../api/events'
 
-export function useEvent() {
+export function useEvent(id) {
   return useQuery({
-    queryKey: ['events'],
-    queryFn: fetchEvents
+    queryKey: ['events', id],
+    queryFn: () => fetchEvent(id)
   })
 }
