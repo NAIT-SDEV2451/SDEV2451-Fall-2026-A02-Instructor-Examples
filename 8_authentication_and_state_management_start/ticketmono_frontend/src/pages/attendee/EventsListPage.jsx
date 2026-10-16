@@ -1,6 +1,6 @@
 import EventCard from "../../components/EventCard"
 // let's use the event
-import { useEvents } from "../../hooks/useEvent"
+import { useEvents } from "../../hooks/useEvents"
 
 
 function EventsListPage() {
