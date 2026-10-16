@@ -3,7 +3,18 @@
 export default function EventDetailsHeader(
   {event}
 ) {
+  const date = new Date(event.date_time)
 
+  const formattedDate = date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
+
+  const formattedTime = date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  })
 
 
   return (
@@ -12,7 +23,7 @@ export default function EventDetailsHeader(
         {event.name}
       </h1>
       <p className="text-base-content/60 mb-4">
-        July 15, 2026 · 7:00 PM
+        {formattedDate}, {formattedTime}
       </p>
       <div>
         <p className="font-semibold">

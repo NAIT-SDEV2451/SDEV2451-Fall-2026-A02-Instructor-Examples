@@ -1,6 +1,18 @@
 import {Link} from 'react-router-dom'
 
 export default function EventCard({ event }) {
+  const date = new Date(event.date_time)
+
+  const formattedDate = date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  })
+
+  const formattedTime = date.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  })
 
   // if you want to see the styling take a look at the docs
   // https://daisyui.com/components/card/?lang=en
@@ -8,7 +20,7 @@ export default function EventCard({ event }) {
     <div className="card-body">
       <h2 className="card-title">{event.name}</h2>
       <p className="text-sm text-base-content/60">
-        July 15 2026, 7:00 pm
+        {formattedDate}, {formattedTime}
       </p>
       <p className="text-sm">
         {event.venue.name}
