@@ -10,3 +10,13 @@ export async function fetchEvents() {
   }
   return response.json()
 }
+
+// you could make this as part of the above
+// function but we're not right now
+export async function fetchEvent(id) {
+  const response = await apiClient(`/events/${id}`)
+  if (!response.ok) {
+    throw new Error("Failed to fetch event " + id)
+  }
+  return response.json()
+}
