@@ -27,7 +27,8 @@ export default function TicketTierSelector({ tier }) {
         className="btn btn-sm btn-outline"
         onClick={decrement}>−</button>
       <span className="w-6 text-center font-medium">
-        {quantity}</span>
+        {quantity}
+      </span>
       <button className="btn btn-sm btn-outline"
         onClick={increment}
       >+</button>
