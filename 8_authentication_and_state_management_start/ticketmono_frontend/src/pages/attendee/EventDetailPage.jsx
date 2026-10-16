@@ -24,6 +24,12 @@ const STATIC_TIERS = [
 function EventDetailPage() {
   const { id } = useParams()
 
+  // make the api in events
+  // make the hook in useEvent
+  // use it here, handle the loading states
+  // pass the data in to event details header.
+
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <EventDetailsHeader />

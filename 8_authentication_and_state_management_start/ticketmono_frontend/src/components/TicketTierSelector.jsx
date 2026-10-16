@@ -16,10 +16,10 @@ export default function TicketTierSelector({ tier }) {
   return <div className="flex items-center justify-between p-4 bg-base-100 rounded-box shadow">
     <div>
       <p className="font-semibold">
-        VIP
+        {tier.name}
       </p>
       <p className="text-sm text-base-content/60">
-        $1000
+        ${tier.price}
       </p>
     </div>
     <div className="flex items-center gap-3">
