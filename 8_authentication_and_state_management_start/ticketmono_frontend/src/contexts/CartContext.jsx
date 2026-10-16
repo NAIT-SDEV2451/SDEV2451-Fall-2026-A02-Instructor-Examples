@@ -30,7 +30,6 @@ export default function CartProvider({ children }) {
     })
   }
 
-
   // this is what we're gong to expose
   const value = { items, updateCart }
 
