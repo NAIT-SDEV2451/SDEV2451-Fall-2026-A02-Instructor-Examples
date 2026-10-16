@@ -2,6 +2,24 @@ import { useParams } from "react-router-dom"
 
 import EventDetailsHeader from "../../components/EventDetailsHeader"
 
+const STATIC_TIERS = [
+  {
+    "id": 1,
+    "price": "150.00",
+    "name": "Floor"
+  },
+  {
+    "id": 2,
+    "price": "85.00",
+    "name": "Lower Bowl"
+  },
+  {
+    "id": 3,
+    "price": "45.00",
+    "name": "Upper Bowl"
+  }
+]
+
 function EventDetailPage() {
   const { id } = useParams()
 

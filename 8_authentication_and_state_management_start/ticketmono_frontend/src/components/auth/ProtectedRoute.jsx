@@ -8,10 +8,12 @@ import { useAuth } from '../../hooks/useAuth'
 function ProtectedRoute({ children }) {
   const { user } = useAuth()
 
+  // if you're not redirect to the login page.
   if (!user) {
     return <Navigate to="/login" replace />
   }
 
+  // if you're authenticated show the page.
   return children
 }
 
