@@ -10,10 +10,6 @@ function EventsListPage() {
     isError
   } = useEvents()
 
-  console.log(events)
-  console.log(isLoading)
-  console.log(isError)
-
   if (isLoading) {
     return <div className="flex justify-center mt-12">
       <span className="loading loading-spinner loading-lg" />

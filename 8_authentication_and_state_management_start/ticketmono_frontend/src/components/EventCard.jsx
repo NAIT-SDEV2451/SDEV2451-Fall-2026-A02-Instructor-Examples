@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 export default function EventCard({ event }) {
 
   // if you want to see the styling take a look at the docs
@@ -15,9 +17,12 @@ export default function EventCard({ event }) {
         {event.venue.address}
       </p>
       <div className="card-actions justify-end mt-2">
-        <button className="btn btn-primary btn-sm">
+        <Link
+          to={`/events/${event.id}/`}
+          className="btn btn-primary btn-sm"
+        >
           Get Tickets
-        </button>
+        </Link>
       </div>
     </div>
   </div>
