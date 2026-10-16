@@ -1,16 +1,30 @@
 import { useState } from 'react'
+import { useCart } from '../hooks/useCart'
 
-export default function TicketTierSelector({ tier }) {
+
+export default function TicketTierSelector({ tier, eventId, eventName }) {
   const [quantity, setQuantity] = useState(0)
+  const { updateCart } = useCart()
+
 
   const decrement = () => {
     const newQuantity = Math.max(0, quantity - 1)
     setQuantity(newQuantity)
+    updateCart({
+      eventId, eventName, tierId: tier.id, tierName: tier.name,
+      tierPrice: tier.price,
+      quantity: newQuantity
+    })
   }
 
   const increment = () => {
     const newQuantity = quantity + 1
     setQuantity(newQuantity)
+    updateCart({
+      eventId, eventName, tierId: tier.id, tierName: tier.name,
+      tierPrice: tier.price,
+      quantity: newQuantity
+    })
   }
 
   return <div className="flex items-center justify-between p-4 bg-base-100 rounded-box shadow">
