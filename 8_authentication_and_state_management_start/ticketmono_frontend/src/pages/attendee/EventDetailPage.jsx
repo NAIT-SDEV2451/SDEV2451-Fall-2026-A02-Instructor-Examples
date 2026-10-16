@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import EventDetailsHeader from "../../components/EventDetailsHeader"
 import TicketTierList from "../../components/TicketTierList"
 
+import { useEvent } from "../../hooks/useEvent"
+
 const STATIC_TIERS = [
   {
     "id": 1,
@@ -26,6 +28,11 @@ function EventDetailPage() {
 
   // make the api in events
   // make the hook in useEvent
+  const {
+    data: event, // I'm renaming data to event in our code.
+    isLoading,
+    isError
+  } = useEvent(id)
   // use it here, handle the loading states
   // pass the data in to event details header.
 
