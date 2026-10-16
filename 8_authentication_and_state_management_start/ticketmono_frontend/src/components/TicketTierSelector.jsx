@@ -3,13 +3,22 @@ import { useCart } from '../hooks/useCart'
 
 
 export default function TicketTierSelector({ tier, eventId, eventName }) {
-  const [quantity, setQuantity] = useState(0)
-  const { updateCart } = useCart()
+  // const [quantity, setQuantity] = useState(0)
+  const { items, updateCart } = useCart()
+
+  // let's get our quantity
+  let key = `${eventId}-${tier.id}`
+  let quantity = 0
+  if (items[key]){
+    quantity = items[key].quantity
+  }
+
+
 
 
   const decrement = () => {
     const newQuantity = Math.max(0, quantity - 1)
-    setQuantity(newQuantity)
+    // setQuantity(newQuantity)
     updateCart({
       eventId, eventName, tierId: tier.id, tierName: tier.name,
       tierPrice: tier.price,
@@ -19,7 +28,7 @@ export default function TicketTierSelector({ tier, eventId, eventName }) {
 
   const increment = () => {
     const newQuantity = quantity + 1
-    setQuantity(newQuantity)
+    // setQuantity(newQuantity)
     updateCart({
       eventId, eventName, tierId: tier.id, tierName: tier.name,
       tierPrice: tier.price,
