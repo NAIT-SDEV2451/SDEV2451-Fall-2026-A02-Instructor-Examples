@@ -52,7 +52,7 @@ function EventDetailPage() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
-      <EventDetailsHeader />
+      <EventDetailsHeader event={event}/>
       <TicketTierList tiers={STATIC_TIERS} />
     </div>
   )
