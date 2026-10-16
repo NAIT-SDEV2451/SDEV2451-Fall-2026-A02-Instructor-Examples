@@ -30,7 +30,10 @@ function EventsListPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {/* we're going to loop through the events pass the event to the card */}
         { events.map((event)=> {
-          return <EventCard key={event.id} event={event}/>
+          return <EventCard
+            key={event.id}
+            event={event}
+          />
         })}
       </div>
     </div>
