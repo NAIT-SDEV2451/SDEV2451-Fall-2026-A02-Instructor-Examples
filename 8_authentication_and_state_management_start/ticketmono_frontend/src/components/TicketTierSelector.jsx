@@ -13,7 +13,6 @@ export default function TicketTierSelector({ tier }) {
     setQuantity(newQuantity)
   }
 
-
   return <div className="flex items-center justify-between p-4 bg-base-100 rounded-box shadow">
     <div>
       <p className="font-semibold">
@@ -24,9 +23,14 @@ export default function TicketTierSelector({ tier }) {
       </p>
     </div>
     <div className="flex items-center gap-3">
-      <button className="btn btn-sm btn-outline" >−</button>
-      <span className="w-6 text-center font-medium">2</span>
-      <button className="btn btn-sm btn-outline" >+</button>
+      <button
+        className="btn btn-sm btn-outline"
+        onClick={decrement}>−</button>
+      <span className="w-6 text-center font-medium">
+        {quantity}</span>
+      <button className="btn btn-sm btn-outline"
+        onClick={increment}
+      >+</button>
     </div>
   </div>
 }
