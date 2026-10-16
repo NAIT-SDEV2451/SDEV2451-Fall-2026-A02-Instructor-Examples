@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import Event
 from .serializers import EventListReadOnlySerializer
@@ -12,8 +12,18 @@ class EventViewSet(ModelViewSet):
     ).prefetch_related(
         "ticket_tiers"  # another optimization for the sql under the hood.
     )
+    serializer_class = EventListReadOnlySerializer
     # we're actually going to talk about this much later on.
 
-    permission_classes = [AllowAny]
+    # permission_classes = [AllowAny]
+    # we're going to change the permissions classes
+    # so that the list, everyone can see
+    # on the single item I want to make it authenticated.
+    def get_permissions(self):
+        # action list https://www.django-rest-framework.org/api-guide/viewsets/#viewset-actions
+        if self.action == "list":
+            permission_classes = [AllowAny]
+        else:
+            permission_classes = [IsAuthenticated]
 
-    serializer_class = EventListReadOnlySerializer
+        return [permission() for permission in permission_classes]
