@@ -1,4 +1,11 @@
+import { useCart } from '../../hooks/useCart'
+
 function CheckoutPage() {
+  const { items } = useCart()
+  const cartItems = Object.values(items)
+
+  console.log("Cart Items List", cartItems)
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
