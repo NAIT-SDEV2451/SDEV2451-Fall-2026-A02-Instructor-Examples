@@ -7,13 +7,12 @@ export default function TicketTierSelector({ tier, eventId, eventName }) {
   const { items, updateCart } = useCart()
 
   // let's get our quantity
+  // from our cart provider gloabl state.
   let key = `${eventId}-${tier.id}`
   let quantity = 0
   if (items[key]){
     quantity = items[key].quantity
   }
-
-
 
 
   const decrement = () => {

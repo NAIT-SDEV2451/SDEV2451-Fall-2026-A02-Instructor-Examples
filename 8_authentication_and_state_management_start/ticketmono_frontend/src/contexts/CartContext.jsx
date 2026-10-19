@@ -16,6 +16,15 @@ export default function CartProvider({ children }) {
     // let's build the key
     const key = `${eventId}-${tierId}`
     updateCartItems((previous) => {
+      // let's handle the where our quantity is zero and remove it from
+      // the object itself.
+      if (quantity === 0) {
+        // we're just removing out key.
+        const { [key]: _, ...rest } = previous
+
+        return rest
+      }
+
       return {
         ...previous, // the old state
         [key] : { // our new key will update the old
