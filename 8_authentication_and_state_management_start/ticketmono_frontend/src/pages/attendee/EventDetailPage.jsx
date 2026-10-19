@@ -17,7 +17,6 @@ function EventDetailPage() {
   // let's check to see if our object has items.
   const hasItems = Object.keys(items).length > 0
 
-
   // make the api in events
   // make the hook in useEvent
   const {
@@ -53,6 +52,7 @@ function EventDetailPage() {
       {hasItems && (
         <div className="mt-6">
           <Link
+            to="/checkout"
             className="btn btn-primary w-full"
           >
             Go to checkout
