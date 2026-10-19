@@ -1,30 +1,22 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 import EventDetailsHeader from "../../components/EventDetailsHeader"
 import TicketTierList from "../../components/TicketTierList"
 
 import { useEvent } from "../../hooks/useEvent"
 
-const STATIC_TIERS = [
-  {
-    "id": 1,
-    "price": "150.00",
-    "name": "Floor"
-  },
-  {
-    "id": 2,
-    "price": "85.00",
-    "name": "Lower Bowl"
-  },
-  {
-    "id": 3,
-    "price": "45.00",
-    "name": "Upper Bowl"
-  }
-]
+import { useCart } from "../../hooks/useCart"
 
 function EventDetailPage() {
   const { id } = useParams()
+
+  // let's import our cart hook, and if theres'
+  // items let's give them a checkout button.
+
+  const {items} = useCart()
+  // let's check to see if our object has items.
+  const hasItems = Object.keys(items).length > 0
+
 
   // make the api in events
   // make the hook in useEvent
@@ -58,6 +50,15 @@ function EventDetailPage() {
         eventId={event.id}
         eventName={event.name}
       />
+      {hasItems && (
+        <div className="mt-6">
+          <Link
+            className="btn btn-primary w-full"
+          >
+            Go to checkout
+          </Link>
+        </div>
+      )}
     </div>
   )
 }
