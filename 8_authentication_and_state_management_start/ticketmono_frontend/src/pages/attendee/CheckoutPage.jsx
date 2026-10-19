@@ -40,7 +40,7 @@ function CheckoutPage() {
               </p>
             </div>
             <p className="font-medium">
-              {item.tierPrice}
+              ${item.tierPrice}
             </p>
           </div>
         })}
@@ -48,7 +48,7 @@ function CheckoutPage() {
 
         <div className="flex justify-between pt-4 font-bold text-lg">
           <span>Total</span>
-          <span>$10.00</span>
+          <span>${grandTotal.toFixed(2)}</span>
         </div>
       </div>
 
