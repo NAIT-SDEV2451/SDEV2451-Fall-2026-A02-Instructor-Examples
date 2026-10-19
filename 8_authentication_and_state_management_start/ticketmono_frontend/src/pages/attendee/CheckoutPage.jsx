@@ -45,7 +45,6 @@ function CheckoutPage() {
           </div>
         })}
 
-
         <div className="flex justify-between pt-4 font-bold text-lg">
           <span>Total</span>
           <span>${grandTotal.toFixed(2)}</span>
