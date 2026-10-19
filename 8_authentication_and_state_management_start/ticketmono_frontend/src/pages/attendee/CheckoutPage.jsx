@@ -17,26 +17,34 @@ function CheckoutPage() {
 
   console.log("Cart Items List", cartItems)
 
+  if (cartItems.length === 0) {
+    return <div className="max-w-2xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Checkout</h1>
+      <p className="text-base-content/60">Your cart is empty.</p>
+    </div>
+  }
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
-      <p className="text-base-content/60">Your cart is empty.</p>
       <div>
-
-        <div
-
-          className="flex justify-between py-3 border-b border-base-300"
-        >
-          <div>
-            <p className="font-semibold">jazz</p>
-            <p className="text-sm text-base-content/60">
-              tiername x tier quantity
+        {cartItems.map((item) => {
+          return <div
+            key={`${item.eventId}-${item.tierId}`}
+            className="flex justify-between py-3 border-b border-base-300"
+          >
+            <div>
+              <p className="font-semibold">{item.eventName}</p>
+              <p className="text-sm text-base-content/60">
+                {item.tierName} x {item.tierQuantity}
+              </p>
+            </div>
+            <p className="font-medium">
+              {item.tierPrice}
             </p>
           </div>
-          <p className="font-medium">
-            price
-          </p>
-        </div>
+        })}
+
 
         <div className="flex justify-between pt-4 font-bold text-lg">
           <span>Total</span>
