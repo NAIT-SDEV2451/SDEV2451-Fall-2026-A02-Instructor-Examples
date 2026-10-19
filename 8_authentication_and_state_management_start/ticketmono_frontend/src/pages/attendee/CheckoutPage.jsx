@@ -4,6 +4,17 @@ function CheckoutPage() {
   const { items } = useCart()
   const cartItems = Object.values(items)
 
+  // reduce is like map and filter, except it reduces to a single numbers
+  const grandTotal = cartItems.reduce(
+    (sum, item) => {
+      return (
+        sum +
+        (item.quantity * parseFloat(item.tierPrice))
+      )
+    },
+    0 // original value.
+  )
+
   console.log("Cart Items List", cartItems)
 
   return (
