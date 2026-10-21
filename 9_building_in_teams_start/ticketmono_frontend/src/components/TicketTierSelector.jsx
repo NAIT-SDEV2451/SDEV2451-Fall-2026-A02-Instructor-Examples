@@ -2,18 +2,26 @@ import { useState } from 'react'
 import { useCart } from '../hooks/useCart'
 
 function TicketTierSelector({ tier, eventId, eventName }) {
-  const [quantity, setQuantity] = useState(0)
-  const { updateCart } = useCart()
+  // const [quantity, setQuantity] = useState(0)
+  const { items, updateCart } = useCart()
+
+  // let's get our quantity
+  // from our cart provider gloabl state.
+  let key = `${eventId}-${tier.id}`
+  let quantity = 0
+  if (items[key]){
+    quantity = items[key].quantity
+  }
 
   function decrement() {
     const newQty = Math.max(0, quantity - 1)
-    setQuantity(newQty)
+    // setQuantity(newQty)
     updateCart({ eventId, eventName, tierId: tier.id, tierName: tier.name, tierPrice: tier.price, quantity: newQty })
   }
 
   function increment() {
     const newQty = quantity + 1
-    setQuantity(newQty)
+    // setQuantity(newQty)
     updateCart({ eventId, eventName, tierId: tier.id, tierName: tier.name, tierPrice: tier.price, quantity: newQty })
   }
 
