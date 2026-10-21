@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useCart } from '../hooks/useCart'
 
 function TicketTierSelector({ tier, eventId, eventName }) {
-  // const [quantity, setQuantity] = useState(0)
   const { items, updateCart } = useCart()
 
   // let's get our quantity
@@ -15,13 +14,11 @@ function TicketTierSelector({ tier, eventId, eventName }) {
 
   function decrement() {
     const newQty = Math.max(0, quantity - 1)
-    // setQuantity(newQty)
     updateCart({ eventId, eventName, tierId: tier.id, tierName: tier.name, tierPrice: tier.price, quantity: newQty })
   }
 
   function increment() {
     const newQty = quantity + 1
-    // setQuantity(newQty)
     updateCart({ eventId, eventName, tierId: tier.id, tierName: tier.name, tierPrice: tier.price, quantity: newQty })
   }
 
