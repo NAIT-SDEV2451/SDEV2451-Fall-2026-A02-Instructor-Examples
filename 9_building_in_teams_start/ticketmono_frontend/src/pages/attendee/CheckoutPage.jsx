@@ -2,7 +2,7 @@ import { useCart } from '../../hooks/useCart'
 import { useCreateOrder } from '../../hooks/useCreateOrder'
 
 function CheckoutPage() {
-  const { items } = useCart()
+  const { items, clearCart } = useCart()
   const { mutate, isPending, isSuccess } = useCreateOrder()
 
   const cartItems = Object.values(items)
@@ -21,6 +21,8 @@ function CheckoutPage() {
     })
     // use the mutation for creating an order
     mutate(orderItems)
+    // in the future we could some checks.
+    clearCart()
   }
   // let's handle the success message of the mutation
   if (isSuccess) {
