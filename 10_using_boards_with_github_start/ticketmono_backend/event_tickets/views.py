@@ -7,7 +7,10 @@ from .serializers import (
     CreateNewOrderSerializer,
     EventListReadOnlySerializer,
     OrderSerializer,
+    OrderDetailSerializer,
 )
+
+# let's create our order viewset
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -24,7 +27,22 @@ class EventViewSet(viewsets.ModelViewSet):
 
 class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-    serializer_class = OrderSerializer
+    # we removed the serializer class property
+    # to define the function.
+    # serializer_class = OrderSerializer
+
+    # let's change the serializer class based on the
+    # action.
+    def get_serializer_class(self):
+        # well if the action is list or retrieve
+        # if it's a get request it'll be using our new
+        # serializer.
+        if self.action in ["list", "retrieve"]:
+            # just a note if you are creating a custom action with the @action decorator.
+            # you need to include the method name above to choose the serializer
+            # class that you'd like to use.
+            return OrderDetailSerializer
+        return OrderSerializer  # our create serializer
 
     def get_queryset(self):
         return Order.objects.filter(customer=self.request.user)
