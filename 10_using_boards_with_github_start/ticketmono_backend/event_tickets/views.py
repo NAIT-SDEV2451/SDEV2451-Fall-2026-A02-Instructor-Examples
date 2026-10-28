@@ -38,6 +38,9 @@ class OrderViewSet(viewsets.ModelViewSet):
         # if it's a get request it'll be using our new
         # serializer.
         if self.action in ["list", "retrieve"]:
+            # just a note if you are creating a custom action with the @action decorator.
+            # you need to include the method name above to choose the serializer
+            # class that you'd like to use.
             return OrderDetailSerializer
         return OrderSerializer  # our create serializer
 
