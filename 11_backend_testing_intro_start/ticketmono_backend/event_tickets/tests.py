@@ -86,3 +86,28 @@ class EventTicketsTestCase(APITestCase):
         # the body of the response is going to be in response.data
         EXPECTED_NUM_EVENTS = 1
         self.assertEqual(len(response.data), EXPECTED_NUM_EVENTS)
+
+    def test_create_order(self):
+        # authenticate
+        self.client.force_authenticate(user=self.user)
+        # create a payload
+        payload = {
+            "items": [
+                {
+                    "event_id": self.event.id,  # use exisitng evnet
+                    "ticket_tier_id": self.tier.id,
+                    "quantity": 2,
+                }
+            ]
+        }
+        # make the request (a post)
+        response = self.client.post(
+            "/api/v1/orders",
+            payload,
+            format="json",
+        )
+        # assertions
+        # status code
+        # number of orders
+        # our customer is correct
+        # the number of tickets is correct
