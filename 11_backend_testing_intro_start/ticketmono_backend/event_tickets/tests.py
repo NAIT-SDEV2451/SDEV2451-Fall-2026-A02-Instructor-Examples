@@ -102,12 +102,72 @@ class EventTicketsTestCase(APITestCase):
         }
         # make the request (a post)
         response = self.client.post(
-            "/api/v1/orders",
+            "/api/v1/orders/",
             payload,
             format="json",
         )
         # assertions
         # status code
+        self.assertEqual(response.status_code, 201)
         # number of orders
+        EXPECTED_NUM_ORDERS = 1
+        self.assertEqual(Order.objects.count(), EXPECTED_NUM_ORDERS)
         # our customer is correct
+        order = Order.objects.first()
+        self.assertEqual(order.customer, self.user)
         # the number of tickets is correct
+        EXPECTED_NUM_TICKETS = 2
+        self.assertEqual(order.tickets.count(), EXPECTED_NUM_TICKETS)
+
+    def test_user_cannot_see_other_users_orders(self):
+        # we're going to creat another user
+        other_user = User.objects.create_user(
+            username="other_user_person",
+            password="testpass123",
+            role="attendee",
+        )
+        # tickets, and an order for the other_user
+        ticket = Ticket.objects.create(tier=self.tier)
+        order = Order.objects.create(customer=other_user)
+        # attach the tickets to the order
+        order.tickets.set([ticket])
+
+        # login as our default user
+        self.client.force_authenticate(user=self.user)
+
+        # check the response
+        response = self.client.get("/api/v1/orders/")
+
+        # I can't see the order above.
+        # right now my self.user has no orders we should see none!
+        self.assertEqual(response.status_code, 200)
+        EXPECTED_NUM_ORDERS = 0
+        self.assertEqual(
+            len(response.data),
+            EXPECTED_NUM_ORDERS,
+        )
+
+    def test_order_detail_returns_nested_tickets(self):
+        # create some tickets
+        ticket = Ticket.objects.create(tier=self.tier)
+        order = Order.objects.create(customer=self.user)
+        # attach the tickets to the order
+        order.tickets.set([ticket])
+
+        # auth
+        self.client.force_authenticate(user=self.user)
+        # check the response for details
+        response = self.client.get(f"/api/v1/orders/{order.id}/")
+
+        # assertions
+        # tickets is in the response data obj.
+        self.assertIn("tickets", response.data)
+        self.assertEqual(len(response.data["tickets"]), 1)
+        # check tier
+        self.assertIn("tier", response.data["tickets"][0])
+        self.assertEqual(
+            response.data["tickets"][0]["tier"]["name"],
+            "General Admission",
+        )
+        # check total price
+        self.assertEqual(response.data["total_price"], "25.00")
