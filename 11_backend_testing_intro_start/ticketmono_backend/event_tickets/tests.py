@@ -60,3 +60,29 @@ class EventTicketsTestCase(APITestCase):
         # equal to the price.
         EXPECTED_TOTAL_PRICE = 50
         self.assertEqual(order.total_price, EXPECTED_TOTAL_PRICE)
+
+    # django's api test case is pretty cool because
+    # you can write integration tests that feel like
+    # postman requests.
+    def test_events_list_requires_authentication(self):
+        # as a unauthed user
+        # in apitestcase self.client is going to give you
+        # access to a server that can respond to requests
+        response = self.client.get("/api/v1/events/")
+        # the above is making a request.
+
+        # I should get a 401 when i this that page.
+        self.assertEqual(response.status_code, 401)
+
+    def test_authenticated_user_can_list_events(self):
+        # we're going to force authentication
+        self.client.force_authenticate(user=self.user)
+        # we're going to make the request.
+        response = self.client.get("/api/v1/events/")
+        # one assertion is the status code.
+        self.assertEqual(response.status_code, 200)
+
+        # how many events should I get in my response.
+        # the body of the response is going to be in response.data
+        EXPECTED_NUM_EVENTS = 1
+        self.assertEqual(len(response.data), EXPECTED_NUM_EVENTS)
