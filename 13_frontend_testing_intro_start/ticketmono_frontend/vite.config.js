@@ -7,7 +7,7 @@ export default defineConfig({
   // add our testing environment.
   test: {
     environment: "jsdom", // fake browser
-    setupFiles: ["../src/test/setup.js"], // run before the tests
+    setupFiles: ["./src/test/setup.js"], // run before the tests
     globals: true
   }
 })
