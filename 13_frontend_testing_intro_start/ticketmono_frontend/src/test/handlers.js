@@ -1,3 +1,4 @@
+// note docs here: https://mswjs.io/docs/quick-start
 // setup msw which is the mock backend so that we can test
 // our frontends here
 import { http, HttpResponse } from 'msw'
