@@ -31,7 +31,7 @@ describe("EventCard", () => { // this is like a section of tests
   })
 
   // test that the venue name and address are in the document.
-  // note it and test do the same thing.
+  // note "it and test" do the same thing, there's no difference.
   it("renders the venue name and address", ()=> {
     // first we render the component
     renderWithProvders( // the args here are jsx.
@@ -43,6 +43,18 @@ describe("EventCard", () => { // this is like a section of tests
 
     expect(venueNameElement).toBeInTheDocument()
     expect(addressElement).toBeInTheDocument()
+  })
+
+  test("links to the event detail page", () => {
+    renderWithProvders(<EventCard event={event} />)
+
+    // just a note here. you can select items in different ways with
+    // screen these are called queries and you can take a look here
+    // https://testing-library.com/docs/queries/about/
+    // to learn more about them.
+    const link = screen.getByRole('link', {name: "Get Tickets"})
+
+    expect(link).toHaveAttribute('href', '/events/1')
   })
 
 })
