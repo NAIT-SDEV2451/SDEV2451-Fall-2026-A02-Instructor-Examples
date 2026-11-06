@@ -26,7 +26,7 @@ const EVENTS_URL = "http://localhost:8000/api/v1/events/"
 
 describe("EventsListPage", () => {
 
-  it("Shows a loading spinner while events not loaded yet", () => {
+  it("shows a loading spinner while events not loaded yet", () => {
     // render the component
     // you can have a "container" which is a way you can query
     // the dom of your component.

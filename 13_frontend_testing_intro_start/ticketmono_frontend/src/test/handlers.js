@@ -23,7 +23,7 @@ export const mockEvents = [
 ]
 
 // we're going to also mock the login.
-export const mockUser = { id: 1, username: 'sam', role: 'user' }
+export const mockUser = { id: 1, username: 'gary', role: 'user' }
 
 // A fake JWT: header.payload.signature. Only the payload is real base64 JSON,
 // because AuthContext decodes it to read user_id.
