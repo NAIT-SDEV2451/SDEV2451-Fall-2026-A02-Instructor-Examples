@@ -103,4 +103,5 @@ Official start date is today which is November 9th 2026.
 - A comment on PRs:
   - Keep them small
   - Update tickets to make the scope of the PR small that might be also adding sub tickets.
+
 - If you folks have more questions/clarifications about this you need to talk about it. I'm here to help and I'll continue to update folks with any large changes that need to be done.
