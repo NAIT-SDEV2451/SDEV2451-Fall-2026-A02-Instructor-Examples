@@ -2,7 +2,11 @@ import EventCard from '../../components/EventCard'
 import { useEvents } from '../../hooks/useEvents'
 
 function EventsListPage() {
-  const { data: events, isLoading, isError } = useEvents()
+  const {
+    data: events,
+    isLoading,
+    isError
+  } = useEvents()
 
   if (isLoading) {
     return (
