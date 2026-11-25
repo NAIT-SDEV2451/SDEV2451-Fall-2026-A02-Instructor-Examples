@@ -8,7 +8,9 @@ function LoginPage() {
 
   function handleSubmit(formData) {
     login(formData, {
-      onSuccess: () => navigate('/'),
+      onSuccess: ({ me }) => {
+        navigate(me?.role === 'event_organizer' ? '/organizer/events' : '/')
+      },
     })
   }
 
