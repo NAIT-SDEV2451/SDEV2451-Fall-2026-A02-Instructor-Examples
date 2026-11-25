@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from rest_framework import serializers
 
 from .models import Event, Order, Ticket, TicketTier, Venue
@@ -32,6 +35,40 @@ class EventListReadOnlySerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ("id", "name", "date_time", "venue", "organizer", "ticket_tiers")
+
+
+class OrganizerEventSerializer(serializers.ModelSerializer):
+    venue = VenueSerializer(read_only=True)
+    status = serializers.SerializerMethodField()
+    tickets_sold = serializers.SerializerMethodField()
+    revenue = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Event
+        fields = (
+            "id",
+            "name",
+            "date_time",
+            "venue",
+            "status",
+            "tickets_sold",
+            "revenue",
+        )
+
+    def get_status(self, event):
+        return "on_sale" if event.date_time > timezone.now() else "past"
+
+    # tier.sold is annotated by OrganizerEventViewSet.get_queryset.
+    def get_tickets_sold(self, event):
+        return sum(tier.sold for tier in event.ticket_tiers.all())
+
+    def get_revenue(self, event):
+        revenue = sum(
+            (tier.price * tier.sold for tier in event.ticket_tiers.all()),
+            Decimal("0.00"),
+        )
+        # A string, like DRF's DecimalField, so the cents are kept in the JSON.
+        return str(revenue)
 
 
 class CreateNewOrderItemSerializer(serializers.Serializer):
