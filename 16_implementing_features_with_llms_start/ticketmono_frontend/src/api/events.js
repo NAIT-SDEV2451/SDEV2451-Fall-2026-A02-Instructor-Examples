@@ -11,3 +11,9 @@ export async function fetchEvent(id) {
   if (!res.ok) throw new Error('Failed to fetch event.')
   return res.json()
 }
+
+export async function fetchOrganizerEvents() {
+  const res = await apiClient('/organizer/events/')
+  if (!res.ok) throw new Error('Failed to fetch your events.')
+  return res.json()
+}

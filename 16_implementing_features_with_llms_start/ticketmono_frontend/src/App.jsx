@@ -12,6 +12,7 @@ import EventDetailPage from './pages/attendee/EventDetailPage'
 import SelectTicketsPage from './pages/attendee/SelectTicketsPage'
 import CheckoutPage from './pages/attendee/CheckoutPage'
 import OrderConfirmationPage from './pages/attendee/OrderConfirmationPage'
+import MyEventsPage from './pages/organizer/MyEventsPage'
 
 const queryClient = new QueryClient()
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/events/:id/tickets" element={<ProtectedRoute><SelectTicketsPage /></ProtectedRoute>} />
             <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
             <Route path="/orders/:id" element={<ProtectedRoute><OrderConfirmationPage /></ProtectedRoute>} />
+            <Route path="/organizer/events" element={<ProtectedRoute><MyEventsPage /></ProtectedRoute>} />
           </Routes>
         </main>
       </div>
